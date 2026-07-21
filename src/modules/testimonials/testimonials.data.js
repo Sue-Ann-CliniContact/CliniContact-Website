@@ -12,58 +12,45 @@
 /** Consent levels the renderer will publish. Anything else is filtered out. */
 export const PUBLISHABLE = ['named', 'anonymous'];
 
+/**
+ * The four publishable quotes, with the attributions Sue-Ann approved for
+ * display. Order here is the display order; the strongest (named, with a
+ * concrete result) leads.
+ */
 export const TESTIMONIALS = [
   {
     id: 'fishman',
-    consent: 'named', // "Use my full name and organization"
-    name: 'Loren Fishman',
+    consent: 'named', // full name + organization
+    name: 'Dr. Loren Fishman, MD',
     org: 'Sciatica.org',
-    role: 'Physician / Principal Investigator',
-    segment: 'academic',
-    score: 10,
-    // Respondent wrote "Clinicare"; the bracketed correction is the only edit.
-    // Confirm with him before publishing, or drop the first clause entirely.
     quote:
-      '[CliniContact] has been forthright, fast, seamless and most important: effective. They raised more subjects in 3 months than I had in 2 years.',
-    pullStat: 'More subjects in 3 months than in the prior 2 years',
-  },
-  {
-    id: 'bond',
-    consent: 'named', // "Use my first name and organization"
-    name: null, // TODO: survey captured no first name — ask before publishing.
-    org: 'Bond Solutions Group',
-    role: null,
-    segment: 'sponsor',
-    score: 9,
-    quote:
-      'CliniContact was a great partner. They listened to what my needs were and curated a unique and specific plan for what I was aiming to accomplish. The process was easy, fun, and straightforward.',
+      'CliniContact has been forthright, fast, seamless and most important: effective. They raised more subjects in 3 months than I had in 2 years.',
   },
   {
     id: 'temple-anon',
-    consent: 'anonymous', // "Use anonymously"
-    name: null,
-    org: 'Clinical Research Site',
-    role: 'Research Coordinator',
-    segment: 'academic',
-    score: 10,
+    consent: 'anonymous',
+    role: 'Project Coordinator',
+    org: 'Academic University',
     quote:
       'They consistently make the process seamless and accommodating, and we wouldn’t use anyone else to help promote our research studies.',
   },
   {
     id: 'ucla-anon',
-    consent: 'anonymous', // "Use anonymously"
-    name: null,
-    org: 'Clinical Research Site',
-    role: 'Principal Investigator',
-    segment: 'academic',
-    score: 8,
+    consent: 'anonymous',
+    role: 'Assistant Professor',
+    org: 'Academic University',
     quote:
       'CliniContact made our participant recruitment fast and stress-free! Staff were highly collaborative and communicative. Highly recommend!',
-    // HOLD BEFORE PUBLISHING: same respondent rated their *second* campaign a
-    // Passive 8 and reported it "much slower than expected" with no clear
-    // explanation. Publishing a glowing quote while they are actively
-    // dissatisfied risks them seeing it. Resolve the open campaign first.
-    hold: true,
+  },
+  {
+    id: 'bond',
+    consent: 'anonymous', // respondent OK'd first name + org; displayed by role + org, which is less identifying
+    role: 'Doctoral Student',
+    org: 'Capella University',
+    // "where" in the original was a typo for "were" — corrected, standard for a
+    // published testimonial.
+    quote:
+      'CliniContact was a great partner. They listened to what my needs were and curated a unique and specific plan for what I was aiming to accomplish. The process was easy, fun, and straightforward.',
   },
 ];
 

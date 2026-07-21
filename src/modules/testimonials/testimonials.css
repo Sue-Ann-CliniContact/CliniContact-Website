@@ -1,0 +1,79 @@
+.cc-testimonials {
+  width: 100%;
+  font-family: var(--cc-font);
+  padding: clamp(44px, 5vw, 76px) 18px;
+  background: #fcfdff;
+  border-top: 1px solid rgba(15, 23, 42, 0.07);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+}
+.cc-testimonials, .cc-testimonials * { box-sizing: border-box; }
+
+.cc-testimonials .cct-inner { max-width: 1120px; margin: 0 auto; }
+
+.cc-testimonials .cct-head { text-align: center; margin-bottom: clamp(24px, 3vw, 38px); }
+.cc-testimonials .cct-kicker {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--cc-accent2);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+.cc-testimonials .cct-title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  font-size: clamp(24px, 2.8vw, 34px);
+  color: var(--cc-ink);
+}
+
+.cc-testimonials .cct-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 720px) { .cc-testimonials .cct-grid { grid-template-columns: 1fr 1fr; } }
+
+.cc-testimonials .cct-card {
+  position: relative;
+  margin: 0;
+  padding: 26px 24px 22px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cc-testimonials .cct-card:hover {
+  border-color: rgba(50, 87, 235, 0.18);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+.cc-testimonials .cct-quote-mark {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 52px;
+  line-height: 0.5;
+  height: 26px;
+  color: rgba(50, 87, 235, 0.22);
+  margin-bottom: 6px;
+}
+
+.cc-testimonials .cct-quote {
+  margin: 0 0 16px;
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.55;
+  color: var(--cc-text);
+  font-weight: 500;
+  flex: 1 1 auto;
+}
+
+.cc-testimonials .cct-by {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.62);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding-top: 14px;
+}

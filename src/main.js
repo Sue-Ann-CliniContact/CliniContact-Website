@@ -10,6 +10,7 @@ import './modules/newsletter/index.js';
 import './modules/participant/index.js';
 import './modules/partner/index.js';
 import './modules/pricing/index.js';
+import './modules/testimonials/index.js';
 import './modules/stats/index.js';
 import './modules/sections/index.js';
 import './modules/work/index.js';
