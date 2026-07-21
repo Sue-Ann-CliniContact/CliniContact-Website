@@ -107,27 +107,28 @@ const section = (s, i) => {
     </section>`;
 };
 
-/** Difficulty-led proof strip. Deliberately carries no volume metrics. */
+/**
+ * Difficulty-led proof strip — a full-width dark band, same structure and
+ * padding as the product bands so its spacing is consistent. No volume metrics.
+ */
 function proofMarkup(p) {
   return `
-    <div class="cc-fullbleed">
-      <div class="ccx-bg is-dark">
-        <div class="ccx-container">
-          <p class="ccx-kicker reveal">${p.kicker}</p>
-          <h2 class="ccx-h1 reveal">${p.heading}</h2>
-          <p class="ccx-sub reveal">${p.sub}</p>
-          <div class="ccx-proof">
-            ${p.items
-              .map(
-                (i) => `<a class="ccx-proof-item reveal" href="/our-work?study=${i.study}">
-                  <b>${i.stat}</b><span>${i.label}</span>
-                </a>`
-              )
-              .join('')}
-          </div>
+    <section class="cc-fullbleed ccx-band ccx-band-dark">
+      <div class="ccx-band-inner ccx-header">
+        <p class="ccx-kicker reveal">${p.kicker}</p>
+        <h2 class="ccx-h1 reveal">${p.heading}</h2>
+        <p class="ccx-sub reveal">${p.sub}</p>
+        <div class="ccx-proof">
+          ${p.items
+            .map(
+              (i) => `<a class="ccx-proof-item reveal" href="/our-work?study=${i.study}">
+                <b>${i.stat}</b><span>${i.label}</span>
+              </a>`
+            )
+            .join('')}
         </div>
       </div>
-    </div>`;
+    </section>`;
 }
 
 function mount(el, data) {

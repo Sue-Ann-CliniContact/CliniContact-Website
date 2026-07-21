@@ -104,31 +104,36 @@
 /* ---- Dark band ------------------------------------------------------------
    Used by the protocol-complexity proof strip. Breaks up an otherwise
    continuous white page and echoes Vision's console navy. */
-.cc-sections .ccx-bg.is-dark {
+.cc-sections .ccx-band-dark {
+  /* A compact stat interlude, so it carries less vertical padding than a full
+     product band — otherwise the dark void between the two light sections reads
+     as too much empty space. */
+  padding-top: clamp(40px, 4vw, 58px);
+  padding-bottom: clamp(40px, 4vw, 58px);
   background:
     radial-gradient(900px 420px at 15% 0%, rgba(75, 160, 248, 0.14), transparent 62%),
     linear-gradient(180deg, #0b1220, #0f1b33);
-  border-top-color: rgba(255, 255, 255, 0.08);
-  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.cc-sections .ccx-bg.is-dark .ccx-kicker { color: var(--cc-accent); }
-.cc-sections .ccx-bg.is-dark .ccx-h1 { color: #fff; }
-.cc-sections .ccx-bg.is-dark .ccx-sub { color: rgba(234, 240, 255, 0.66); }
+.cc-sections .ccx-band-dark .ccx-kicker { color: var(--cc-accent); }
+.cc-sections .ccx-band-dark .ccx-h1 { color: #fff; }
+.cc-sections .ccx-band-dark .ccx-sub { color: rgba(234, 240, 255, 0.66); }
 
-.cc-sections .ccx-bg.is-dark .ccx-proof-item {
+.cc-sections .ccx-band-dark .ccx-proof-item {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top: 2px solid var(--cc-accent);
   box-shadow: none;
 }
-.cc-sections .ccx-bg.is-dark .ccx-proof-item:hover {
+.cc-sections .ccx-band-dark .ccx-proof-item:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(75, 160, 248, 0.42);
   border-top-color: var(--cc-accent);
   box-shadow: none;
 }
-.cc-sections .ccx-bg.is-dark .ccx-proof-item b { color: #fff; }
-.cc-sections .ccx-bg.is-dark .ccx-proof-item span { color: rgba(234, 240, 255, 0.62); }
+.cc-sections .ccx-band-dark .ccx-proof-item b { color: #fff; }
+.cc-sections .ccx-band-dark .ccx-proof-item span { color: rgba(234, 240, 255, 0.62); }
 
 /* Band is the section now; it sets its own scroll offset for anchor jumps. */
 .cc-sections .ccx-band { scroll-margin-top: 90px; position: relative; }
@@ -300,7 +305,7 @@
 
 /* Difficulty-led proof strip */
 .cc-sections .ccx-proof {
-  margin-top: clamp(24px, 3vw, 40px);
+  margin-top: clamp(20px, 2.2vw, 30px);
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
