@@ -1,107 +1,74 @@
 .cc-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(11, 18, 32, 0.62);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  padding: 12px;
+  padding: 16px;
   font-family: var(--cc-font);
 }
 .cc-modal.open { display: flex; }
 
 .cc-modal-card {
   width: 100%;
-  max-width: 580px;
-  max-height: 95vh;
-  overflow-y: auto;
-  border-radius: 24px;
-  background: #111827;
-  padding: 24px;
-  color: #fff;
+  max-width: 640px;
+  height: min(90vh, 860px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
 }
 
 .cc-modal-head {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
 }
-.cc-modal-head h2 { margin: 0; font-size: 20px; }
-.cc-modal-head p { color: #9ca3af; font-size: 14px; margin: 4px 0 0; }
+.cc-modal-head h2 { margin: 0; font-size: 18px; font-weight: 800; letter-spacing: -0.015em; color: var(--cc-ink); }
+.cc-modal-head p { margin: 4px 0 0; color: var(--cc-muted); font-size: 13px; }
 
-.cc-form { display: grid; gap: 12px; }
-@media (min-width: 480px) {
-  .cc-form { grid-template-columns: 1fr 1fr; }
-  .cc-form .cc-span2 { grid-column: 1 / -1; }
+.cc-modal-head-actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+.cc-modal-ext {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cc-accent2);
+  text-decoration: none;
+  white-space: nowrap;
 }
+.cc-modal-ext:hover { text-decoration: underline; }
 
-.cc-field label { font-size: 12px; display: block; margin-bottom: 4px; }
-.cc-field input,
-.cc-field select {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 12px;
-  color: #fff;
-  font-size: 14px;
-  font-family: inherit;
+.cc-x {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  flex: 0 0 auto;
 }
-.cc-field select option { background: #111827; }
+.cc-x:hover { background: rgba(15, 23, 42, 0.04); }
 
-.cc-x { font-size: 20px; color: #9ca3af; line-height: 1; }
-.cc-status { font-size: 13px; color: #fb7185; margin-top: 8px; display: none; }
+.cc-modal-body { position: relative; flex: 1 1 auto; background: #f6f8fc; }
+.cc-modal-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* Honeypot — off-screen for humans, tempting for bots. */
-.cc-hp {
+.cc-modal-loading {
   position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.cc-submit {
-  display: inline-flex;
+  inset: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 16px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
-  color: #fff;
-  font-weight: 800;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-  flex: 1;
-}
-.cc-submit:disabled { opacity: 0.7; cursor: default; }
-
-/* Participant hand-off state */
-.cc-handoff-body {
-  margin: 0;
   font-size: 14px;
-  line-height: 1.6;
-  color: #cbd5e1;
+  font-weight: 600;
+  color: var(--cc-muted);
+  pointer-events: none;
 }
-.cc-handoff-actions {
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: stretch;
-}
-.cc-handoff-actions .cc-submit { text-decoration: none; flex: 0 0 auto; }
-.cc-handoff-back {
-  background: none;
-  border: none;
-  color: #94a3b8;
-  font-size: 13px;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 6px;
-  text-decoration: underline;
-}
-.cc-handoff-back:hover { color: #cbd5e1; }

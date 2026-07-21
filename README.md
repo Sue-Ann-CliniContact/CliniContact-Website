@@ -118,7 +118,7 @@ migrated one at a time instead of in a single sweep. See `LEGACY_IDS` in `src/co
 | Module | Embed | State |
 | --- | --- | --- |
 | Nav | `data-cc="nav"` | product-shaped now (`NAV_LINKS = PRODUCT_NAV`). "Platform" is a mega-menu that teaches the products; "Pricing" is a top-level link. Add `data-cc-dark` on dark-hero pages (homepage). Old capability nav kept as `CURRENT_NAV` for rollback. |
-| Contact modal | *(none — global)* | ported, extracted from nav |
+| Quote modal | *(none — global)* | opens forms.clinicontact.com/pricing in an iframe; triggered by any `data-cc-contact` (value → `?source=`). Replaces the old /api/lead form. |
 | Stats / Our Results | `data-cc="stats"` | ported |
 | Footer | `data-cc="footer"` | ported (homepage + Solutions were identical) |
 | Alternating sections | `data-cc="sections" data-cc-page="solutions"` | ported, data-driven — product pages are new data, not new code |

@@ -60,12 +60,6 @@ export async function submitPdfLead(payload) {
   return res;
 }
 
-export async function submitLead(payload) {
-  const res = await fetch(`${BACKEND}/api/lead`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  if (!res.ok) throw new Error(`lead submit failed: ${res.status}`);
-  return res;
-}
+// NOTE: the general /api/lead endpoint is no longer called from the site — the
+// "Request a quote" flow now uses the hosted form at forms.clinicontact.com/pricing
+// (see modules/contact). The PDF-download gate above still uses /api/pdf-lead.

@@ -1,51 +1,25 @@
 import { injectCSS } from '../../core/mount.js';
-import { submitLead, THANK_YOU_URL, PARTICIPANT_URL } from '../../core/api.js';
+import { PRICING_FORM } from '../pricing/pricing.data.js';
 import css from './modal.css';
 
 /**
- * Contact modal, extracted from the nav embed.
+ * "Request a quote" modal.
  *
- * It used to live inside the nav, which meant only the nav button could open
- * it. Now it's a page-level singleton: any CTA anywhere can call openContact(),
- * so "Request a proposal" and per-product CTAs all reuse one form.
+ * Previously a built-in name/email/persona form that POSTed to /api/lead. Now
+ * it embeds the hosted pricing/demo form (forms.clinicontact.com/pricing) in an
+ * iframe, so there is a single lead form to maintain and it opens in a modal
+ * rather than navigating away from the page.
+ *
+ * Module name and exports (openContact/closeContact/initContact) are unchanged
+ * so nav, chat and the global [data-cc-contact] delegate keep working.
+ *
+ * The form host sends no X-Frame-Options / frame-ancestors, so it embeds fine.
+ * A fallback "open in a new tab" link covers any browser that still blocks it.
  */
 
 let modal = null;
+let frame = null;
 let lastFocused = null;
-
-const TOPICS = [
-  ['I need help with participant recruitment', 'Help with participant recruitment'],
-  ['I want to participate in a research study', 'Participate in a study'],
-];
-
-/**
- * Selecting this used to submit a sales lead to /api/lead, so members of the
- * public looking to join a study landed on the sponsor/CRO board — polluting
- * the pipeline and, worse, leaving people who wanted to take part in research
- * waiting on a sales follow-up that was never the right response. Choosing it
- * now hands off to Beacon instead of collecting anything.
- */
-const PARTICIPANT_TOPIC = 'I want to participate in a research study';
-
-/**
- * Full persona list, recovered from the orphaned B2B modal.
- *
- * The live nav modal only offered four options and dropped "Academic or
- * Grant-Funded Researcher" entirely — so academic leads, a core segment, were
- * self-selecting into "Other". Values match the strings the backend and Monday
- * board already expect from the B2B modal.
- */
-const PERSONAS = [
-  ['Research Site or Investigator Network', 'Research Site or Investigator Network'],
-  ['Academic or Grant-Funded Researcher', 'Academic or Grant-Funded Researcher'],
-  ['Contract Research Organization', 'Contract Research Organization'],
-  ['Pharma or Biotech Company', 'Pharma or Biotech Company'],
-  ['Other Research Sponsor', 'Other Research Sponsor'],
-  ['Other', 'Other'],
-];
-
-const options = (pairs) =>
-  pairs.map(([value, label]) => `<option value="${value}">${label}</option>`).join('');
 
 function build() {
   injectCSS('contact-modal', css);
@@ -54,157 +28,71 @@ function build() {
   modal.className = 'cc-modal';
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-modal', 'true');
-  modal.setAttribute('aria-label', 'Contact CliniContact');
+  modal.setAttribute('aria-label', 'Request a quote');
   modal.innerHTML = `
     <div class="cc-modal-card">
       <div class="cc-modal-head">
         <div>
-          <h2>Contact CliniContact</h2>
-          <p>We'll route you to the right enrollment specialist.</p>
+          <h2>Request a quote</h2>
+          <p>Tell us about your study and we'll come back with pricing.</p>
         </div>
-        <button class="cc-x" type="button" data-close aria-label="Close">&#10005;</button>
+        <div class="cc-modal-head-actions">
+          <a class="cc-modal-ext" href="${PRICING_FORM}" target="_blank" rel="noopener" title="Open in a new tab">Open in new tab &#8599;</a>
+          <button class="cc-x" type="button" data-close aria-label="Close">&#10005;</button>
+        </div>
       </div>
-      <form class="cc-form" novalidate>
-        <div class="cc-field">
-          <label for="cc-name">Full Name</label>
-          <input id="cc-name" name="name" required placeholder="John Doe" autocomplete="name" />
-        </div>
-        <div class="cc-field">
-          <label for="cc-email">Email</label>
-          <input id="cc-email" name="email" type="email" required placeholder="john@company.com" autocomplete="email" />
-        </div>
-        <div class="cc-field">
-          <label for="cc-phone">Phone</label>
-          <input id="cc-phone" name="phone" placeholder="+1..." autocomplete="tel" />
-        </div>
-        <div class="cc-field">
-          <label for="cc-org">Organization</label>
-          <input id="cc-org" name="organization" placeholder="Company Name" autocomplete="organization" />
-        </div>
-        <div class="cc-field cc-span2">
-          <label for="cc-topic">Topic</label>
-          <select id="cc-topic" name="contact_about" required>
-            <option value="" disabled selected>Select a topic</option>
-            ${options(TOPICS)}
-          </select>
-        </div>
-        <div class="cc-field cc-span2">
-          <label for="cc-persona">Your Role</label>
-          <select id="cc-persona" name="persona" required>
-            <option value="" disabled selected>Select one</option>
-            ${options(PERSONAS)}
-          </select>
-        </div>
-        <div class="cc-hp" aria-hidden="true">
-          <label>Website<input name="cc_website" tabindex="-1" autocomplete="off" /></label>
-        </div>
-        <div class="cc-status cc-span2" data-status></div>
-        <div class="cc-span2" style="display:flex; gap:10px; margin-top:10px;">
-          <button type="submit" class="cc-submit">Submit Request</button>
-        </div>
-      </form>
+      <div class="cc-modal-body">
+        <div class="cc-modal-loading" data-loading>Loading form…</div>
+        <iframe class="cc-modal-frame" data-frame title="Request a quote form" loading="lazy"></iframe>
+      </div>
     </div>
   `;
   document.body.appendChild(modal);
+
+  frame = modal.querySelector('[data-frame]');
+  const loading = modal.querySelector('[data-loading]');
+  frame.addEventListener('load', () => {
+    if (frame.src && frame.src !== 'about:blank') loading.style.display = 'none';
+  });
 
   modal.querySelector('[data-close]').addEventListener('click', closeContact);
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeContact();
   });
-  modal.querySelector('form').addEventListener('submit', onSubmit);
-
-  // Hand participants off the moment they identify themselves, rather than
-  // letting them fill in a sales form first.
-  modal.querySelector('#cc-topic').addEventListener('change', (e) => {
-    if (e.target.value === PARTICIPANT_TOPIC) showParticipantHandoff();
-  });
 
   return modal;
 }
 
-function showParticipantHandoff() {
-  const card = modal.querySelector('.cc-modal-card');
-  card.innerHTML = `
-    <div class="cc-modal-head">
-      <div>
-        <h2>Looking to join a study?</h2>
-        <p>You're in the right place — just not on the right page.</p>
-      </div>
-      <button class="cc-x" type="button" data-close aria-label="Close">&#10005;</button>
-    </div>
-    <p class="cc-handoff-body">
-      This page is for research teams and sponsors. To find studies currently looking for
-      participants, explained in plain language, visit Beacon. Browsing is free, there's no
-      obligation, and you choose whether to contact a study team.
-    </p>
-    <div class="cc-handoff-actions">
-      <a class="cc-submit" href="${PARTICIPANT_URL}" target="_blank" rel="noopener">
-        Find studies on Beacon &#8599;
-      </a>
-      <button type="button" class="cc-handoff-back" data-back>Back to the contact form</button>
-    </div>
-  `;
-  card.querySelector('[data-close]').addEventListener('click', closeContact);
-  card.querySelector('[data-back]').addEventListener('click', () => {
-    // Rebuild from scratch so the form returns in a clean state.
-    modal.remove();
-    modal = null;
-    openContact();
-  });
-}
-
-async function onSubmit(e) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const btn = form.querySelector('.cc-submit');
-  const status = form.querySelector('[data-status]');
-
-  const payload = Object.fromEntries(new FormData(form).entries());
-
-  // Honeypot: a real person never fills a field they cannot see.
-  if (payload.cc_website) return;
-  delete payload.cc_website;
-
-  if (!payload.name || !payload.email || !payload.contact_about || !payload.persona) {
-    status.textContent = 'Please fill in all required fields.';
-    status.style.display = 'block';
-    return;
-  }
-
-  btn.disabled = true;
-  const original = btn.textContent;
-  btn.textContent = 'Sending...';
-  status.style.display = 'none';
-
-  try {
-    await submitLead(payload);
-    btn.textContent = 'Success!';
-    window.location.href = THANK_YOU_URL;
-  } catch (err) {
-    console.error(err);
-    status.textContent = 'Something went wrong. Please try again or email support@clinicontact.com.';
-    status.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = original;
-  }
-}
-
-export function openContact() {
+/**
+ * @param {string} [source] optional context (e.g. "horizon") appended as a
+ *   ?source= param, so the form can attribute where the request came from if it
+ *   chooses to read it. Harmless if ignored.
+ */
+export function openContact(source) {
   if (!modal) build();
   lastFocused = document.activeElement;
+
+  const loading = modal.querySelector('[data-loading]');
+  loading.style.display = '';
+  const url = source ? `${PRICING_FORM}?source=${encodeURIComponent(source)}` : PRICING_FORM;
+  // (Re)load each open so the form starts fresh.
+  frame.src = url;
+
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  modal.querySelector('#cc-name')?.focus();
+  modal.querySelector('[data-close]').focus();
 }
 
 export function closeContact() {
   if (!modal) return;
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  // Stop the framed form running while closed.
+  frame.src = 'about:blank';
   lastFocused?.focus?.();
 }
 
-/** `?contact=true` / `?openContact=1` deep-links straight into the form. */
+/** `?contact=true` / `?openContact=1` deep-links straight into the modal. */
 function shouldAutoOpen() {
   const p = new URLSearchParams(window.location.search);
   const truthy = (v) => v === 'true' || v === '1';
@@ -217,18 +105,15 @@ export function initContact() {
   });
 
   /**
-   * Any element on any page can opt in with data-cc-contact.
-   *
-   * `data-cc-open-contact` is the legacy attribute from the hero embed, which
-   * opened the modal by poking `#cc-modal.classList.add('open')` directly.
-   * Supporting it here means the old hero keeps working un-edited during
-   * migration.
+   * Any element opts in with data-cc-contact. Its value, if any, is passed as
+   * the source: <button data-cc-contact="horizon">. `data-cc-open-contact` is
+   * the legacy hero attribute, still supported.
    */
   document.addEventListener('click', (e) => {
     const trigger = e.target.closest('[data-cc-contact], [data-cc-open-contact]');
     if (trigger) {
       e.preventDefault();
-      openContact();
+      openContact(trigger.getAttribute('data-cc-contact') || undefined);
     }
   });
 

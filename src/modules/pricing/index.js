@@ -1,5 +1,5 @@
 import { define, injectCSS } from '../../core/mount.js';
-import { TIERS, ENTERPRISE, ALWAYS_INCLUDED, ENTRY_LABEL, PRICING_FORM } from './pricing.data.js';
+import { TIERS, ENTERPRISE, ALWAYS_INCLUDED, ENTRY_LABEL } from './pricing.data.js';
 import css from './pricing.css';
 
 const isAnchor = (price) => /^[$\d]/.test(price);
@@ -17,7 +17,7 @@ const tierCard = (t) => `
     <ul class="ccpr-features">
       ${t.features.map((f) => `<li>${f}</li>`).join('')}
     </ul>
-    <a class="ccpr-btn" href="${PRICING_FORM}" target="_blank" rel="noopener">${t.cta}</a>
+    <button class="ccpr-btn" type="button" data-cc-contact="${t.id}">${t.cta}</button>
   </div>
 `;
 
@@ -56,7 +56,7 @@ function mount(el) {
           <ul class="ccpr-ent-inc">
             ${ENTERPRISE.includes.map((i) => `<li>${i}</li>`).join('')}
           </ul>
-          <a class="ccpr-ent-btn" href="${PRICING_FORM}" target="_blank" rel="noopener">${ENTERPRISE.cta}</a>
+          <button class="ccpr-ent-btn" type="button" data-cc-contact="enterprise">${ENTERPRISE.cta}</button>
         </div>
 
         <p class="ccpr-foot">Smart Screener and Vision are included with any package — they are not sold separately. Horizon and Bridge can be combined. The prices above are starting points for a single study at a single site; networks, SMOs, CROs and sponsors get a custom model scoped to their portfolio.</p>
