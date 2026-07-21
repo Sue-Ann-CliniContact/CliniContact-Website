@@ -19,9 +19,9 @@ import css from './hero.css';
 
 const STAGES = [
   {
-    stage: 'Study startup',
+    stage: 'Startup & digital recruitment',
     name: 'Horizon',
-    desc: 'Protocol in, full recruitment package out, in about an hour.',
+    desc: 'Recruitment package built, then campaigns we run to your ad spend.',
     href: '#horizon',
   },
   {

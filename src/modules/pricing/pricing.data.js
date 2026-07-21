@@ -26,14 +26,14 @@ export const TIERS = [
   {
     id: 'horizon',
     name: 'Horizon',
-    tagline: 'Study startup & recruitment',
+    tagline: 'Study startup & digital recruitment',
     price: '$800',
     unit: '/month',
-    priceNote: 'One study, one site. Your ad spend is set separately — no management fee.',
+    priceNote: 'One study, one site. We build and manage the campaigns; you set the ad spend — no management fee on it.',
     features: [
-      'Protocol to full recruitment package in about an hour',
+      'Recruitment package + study-specific marketing strategy in ~1 hour',
+      'Managed digital ad campaigns run to your strategy',
       'IRB-ready in 9 days · 86% first-pass approval',
-      'Hosted landing page and screener',
       'Smart Screener + Vision included',
     ],
     cta: 'Start with Horizon',

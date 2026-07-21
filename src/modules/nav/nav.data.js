@@ -35,7 +35,7 @@ export const PRODUCT_NAV = [
     label: 'Platform',
     mega: true,
     children: [
-      { stage: 'Study startup', label: 'Horizon', href: `${SITE}/#horizon`, note: 'Protocol to a full recruitment package in about an hour.' },
+      { stage: 'Startup & digital recruitment', label: 'Horizon', href: `${SITE}/#horizon`, note: 'Recruitment package built, then digital campaigns we run for you.' },
       { stage: 'Referral pathways', label: 'Bridge', href: `${SITE}/#bridge`, note: 'Community and provider networks for underrepresented reach.' },
       { stage: 'Prescreening', label: 'Smart Screener', href: `${SITE}/#smart-screener`, note: 'Your I/E criteria applied before a coordinator is involved.', included: true },
       { stage: 'Participant record', label: 'Vision', href: `${SITE}/#vision`, note: 'One timeline per participant, automatic per-study reporting.', included: true },

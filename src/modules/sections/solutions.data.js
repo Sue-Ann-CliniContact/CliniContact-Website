@@ -46,12 +46,12 @@ export const SOLUTIONS_PAGE = {
       aliases: ['advanced-smart-screening'],
       eyebrow: 'Academic & grant-funded research',
       title: 'Recruitment that fits a grant budget and an IRB calendar.',
-      desc: 'Grant-funded studies rarely have a marketing function and cannot absorb a six-week materials cycle. Horizon turns a protocol into a complete recruitment package — assets and strategy — in about an hour, and the referral handoff is built into the system your lab already uses, so adopting it does not mean a new data pathway to justify to your IRB.',
+      desc: 'Grant-funded studies rarely have a marketing function and cannot absorb a six-week materials cycle. Horizon turns a protocol into a complete recruitment package in about an hour, then runs the digital recruitment for you — you set the ad spend, we build and manage the campaigns. The referral handoff is built into the system your lab already uses, so adopting it does not mean a new data pathway to justify to your IRB.',
       bullets: [
-        'Full recruitment package generated in about an hour',
+        'Recruitment package and marketing strategy in about an hour',
+        'Managed digital campaigns to your ad spend — no marketing function needed',
         'IRB-ready in 9 days; 86% first-pass approval, 1.2 review cycles',
         'Handoff built into REDCap, Qualtrics or CRIO during onboarding',
-        'Pilot pricing sized for a single study at a single site',
       ],
       illustration: ILLUSTRATIONS.irbTimeline,
       ctas: [

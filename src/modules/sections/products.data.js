@@ -24,22 +24,22 @@ const WORK = 'https://www.clinicontact.com/our-work';
 export const PRODUCTS_PAGE = {
   kicker: 'The platform',
   heading: 'Four modules across the recruitment funnel.',
-  sub: 'Each module stands alone. Run together they hand off without re-keying: Horizon clears study startup, Bridge opens referral pathways, Smart Screener applies your I/E criteria, and Vision holds the participant record your coordinators work from.',
+  sub: 'Each module stands alone. Run together they hand off without re-keying: Horizon runs study startup and digital recruitment, Bridge opens community referral pathways, Smart Screener applies your I/E criteria, and Vision holds the participant record your coordinators work from.',
   showJumps: false,
   sections: [
     {
       id: 'horizon',
-      eyebrow: 'Horizon · Study startup',
-      title: 'Protocol in. Complete recruitment package out. About an hour.',
-      desc: 'Give Horizon a ClinicalTrials.gov link, a protocol PDF, or pasted protocol text. It extracts sponsor, institution, IRB, cohorts and eligibility in seconds, you review and confirm, and roughly an hour later you have the recruitment asset pack, the marketing strategy, and — where community reach matters — the Bridge outreach strategy. Every compliance flag is cited to its source. Most recruitment partners engage only after materials clear IRB; Horizon covers the interval before that, which is where recruitment timelines are usually lost.',
+      eyebrow: 'Horizon · Study startup & digital recruitment',
+      title: 'Protocol in. A recruitment package — and the campaigns to run it.',
+      desc: 'Give Horizon a ClinicalTrials.gov link, a protocol PDF, or pasted protocol text. In about an hour you have the recruitment asset pack, the study-specific marketing strategy, and — where community reach matters — the Bridge outreach strategy, every compliance flag cited to its source. Then we run it: you set your ad spend, and we build and manage the digital campaigns to that strategy. It is managed digital recruitment, not a folder of materials handed back to you.',
       bullets: [
-        'Recruitment package, marketing strategy and Bridge outreach strategy in about an hour',
-        'Intake from a registry link, protocol PDF or pasted text — extracted in seconds',
+        'Recruitment package and study-specific marketing strategy in about an hour',
+        'We build and manage the digital ad campaigns — you set the ad spend, no management fee',
         'Site-level scoping and protocol amendments applied at intake',
         // Two different measures, deliberately kept apart: ~1 hour is generation
         // time; 9 days is elapsed time through IRB readiness, which includes
         // human review and submission. Conflating them would be an overclaim.
-        'Then IRB-ready in 9 days, with 86% first-pass approval',
+        'IRB-ready in 9 days, with 86% first-pass approval',
       ],
       screenshot: 'horizonIntake',
       scale: {
