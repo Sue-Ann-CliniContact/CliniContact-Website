@@ -22,7 +22,7 @@ function mount(el) {
         <h2 class="ccp-title">Looking to take part in research yourself?</h2>
         <p class="ccp-sub">
           This site is for research teams and sponsors. Beacon lists studies currently
-          looking for participants, explained in plain language — free to browse, with no
+          looking for participants, explained in plain language, free to browse, with no
           obligation to contact anyone.
         </p>
       </div>

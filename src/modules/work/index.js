@@ -170,7 +170,7 @@ function mount(el) {
 
   function openGate(doc) {
     activeDoc = doc;
-    q('[data-gate-title]').textContent = `Get the PDF — ${doc.title || ''}`.trim();
+    q('[data-gate-title]').textContent = `Get the PDF: ${doc.title || ''}`.trim();
     gate.classList.add('open');
     gate.setAttribute('aria-hidden', 'false');
     lockScroll(true);
@@ -260,7 +260,7 @@ function mount(el) {
     try {
       await submitPdfLead(payload);
       toast.classList.add('show');
-      toast.innerHTML = `Success — <a href="${esc(activeDoc.url)}" target="_blank" rel="noopener" style="font-weight:950; color:${'rgba(50,87,235,.95)'};">click here to download</a>.`;
+      toast.innerHTML = `Success. <a href="${esc(activeDoc.url)}" target="_blank" rel="noopener" style="font-weight:950; color:${'rgba(50,87,235,.95)'};">Click here to download</a>.`;
       submitBtn.textContent = 'Done';
     } catch (err) {
       console.error(err);

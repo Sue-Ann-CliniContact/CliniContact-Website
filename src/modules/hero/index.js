@@ -59,9 +59,9 @@ function mount(el) {
           <h1 class="cch-h1">From protocol to <span class="accent">prescreened referral</span>.</h1>
 
           <p class="cch-sub">
-            Most recruitment partners engage once your materials clear IRB. We start at the protocol —
-            through study startup, referral pathways into underrepresented populations, and
-            inclusion/exclusion prescreening — and hand your coordinators a qualified, verified record.
+            Most recruitment partners engage once your materials clear IRB. We start at the protocol:
+            study startup, referral pathways into underrepresented populations, and
+            inclusion/exclusion prescreening. Then we hand your coordinators a qualified, verified record.
           </p>
 
           <!--

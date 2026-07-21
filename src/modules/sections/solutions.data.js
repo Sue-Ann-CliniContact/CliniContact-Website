@@ -28,7 +28,7 @@ export const SOLUTIONS_PAGE = {
       aliases: ['virtual-remote-enrollment'],
       eyebrow: 'Research sites & investigators',
       title: 'Protect coordinator time before it is spent.',
-      desc: 'Site staff lose hours to unreachable contacts and respondents who were never eligible. We apply your inclusion/exclusion criteria upstream, verify contactability by SMS one-time passcode, and hand across a queue that has already been filtered — with the exclusion reason attached to everything that did not pass.',
+      desc: 'Site staff lose hours to unreachable contacts and respondents who were never eligible. We apply your inclusion/exclusion criteria upstream, verify contactability by SMS one-time passcode, and hand across a queue that has already been filtered, with the exclusion reason attached to everything that did not pass.',
       bullets: [
         'Prescreening against your I/E criteria before handoff',
         'SMS OTP verification and IP validation on every submission',
@@ -46,10 +46,10 @@ export const SOLUTIONS_PAGE = {
       aliases: ['advanced-smart-screening'],
       eyebrow: 'Academic & grant-funded research',
       title: 'Recruitment that fits a grant budget and an IRB calendar.',
-      desc: 'Grant-funded studies rarely have a marketing function and cannot absorb a six-week materials cycle. Horizon turns a protocol into a complete recruitment package in about an hour, then runs the digital recruitment for you — you set the ad spend, we build and manage the campaigns. The referral handoff is built into the system your lab already uses, so adopting it does not mean a new data pathway to justify to your IRB.',
+      desc: 'Grant-funded studies rarely have a marketing function and cannot absorb a six-week materials cycle. Horizon turns a protocol into a complete recruitment package in about an hour, then runs the digital recruitment for you: you set the ad spend, we build and manage the campaigns. The referral handoff is built into the system your lab already uses, so adopting it does not mean a new data pathway to justify to your IRB.',
       bullets: [
         'Recruitment package and marketing strategy in about an hour',
-        'Managed digital campaigns to your ad spend — no marketing function needed',
+        'Managed digital campaigns to your ad spend, no marketing function needed',
         'IRB-ready in 9 days; 86% first-pass approval, 1.2 review cycles',
         'Handoff built into REDCap, Qualtrics or CRIO during onboarding',
       ],
@@ -82,7 +82,7 @@ export const SOLUTIONS_PAGE = {
       aliases: ['high-complexity-criteria'],
       eyebrow: 'Sponsors & CROs',
       title: 'Evidence your Diversity Action Plan was executed, not just filed.',
-      desc: 'A Diversity Action Plan commits you to enrollment targets a paid-media strategy alone rarely reaches. Bridge opens referral pathways through advocacy organizations, community clinics and provider networks matched to each site catchment area, and reports at partner level — so representation can be shown in the funnel rather than asserted in the plan.',
+      desc: 'A Diversity Action Plan commits you to enrollment targets a paid-media strategy alone rarely reaches. Bridge opens referral pathways through advocacy organizations, community clinics and provider networks matched to each site catchment area, and reports at partner level, so representation can be shown in the funnel rather than asserted in the plan.',
       bullets: [
         'Partner networks matched by indication and site catchment area',
         'Partner-level referral and engagement reporting',

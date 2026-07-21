@@ -28,7 +28,7 @@ const SERVICES = [
 ];
 
 const GREETING =
-  "Hi — I’m CliniContact’s B2B site support assistant. Ask me about Smart Screeners, lead validation, handoff workflow, compliance, or how we typically scope recruitment for a study.";
+  "Hi, I’m CliniContact’s B2B site support assistant. Ask me about Smart Screeners, lead validation, handoff workflow, compliance, or how we typically scope recruitment for a study.";
 
 const getSession = () => {
   try { return localStorage.getItem(SESSION_KEY) || ''; } catch { return ''; }
@@ -52,7 +52,7 @@ function mount(el) {
           </div>
           <div style="padding: 4px 6px 0;">
             <div class="ccc-left-title">What CliniContact helps with</div>
-            <p class="ccc-left-sub">A quick overview of the services teams use us for—rotating live while you chat.</p>
+            <p class="ccc-left-sub">A quick overview of the services teams use us for, rotating live while you chat.</p>
           </div>
           <div class="ccc-services" data-services>
             ${SERVICES.map(
@@ -147,7 +147,7 @@ function mount(el) {
       const data = await sendChat({ message, history, sessionId: getSession() });
       if (data.session_id) setSession(data.session_id);
       placeholder.textContent =
-        data.reply || 'I can help with that — what’s your study indication and target geography?';
+        data.reply || 'I can help with that. What’s your study indication and target geography?';
 
       turns += 1;
       if (!nudged && (data.showLeadForm || turns >= NUDGE_AFTER_TURNS)) {

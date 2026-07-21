@@ -21,8 +21,8 @@ function mount(el) {
         <h2 class="ccn-title">Enrollment operations, in your feed.</h2>
         <p class="ccn-sub">
           Protocol-level recruitment tactics, IRB and Diversity Action Plan changes worth
-          knowing about, and what is actually moving enrollment for research teams —
-          published on LinkedIn.
+          knowing about, and what is actually moving enrollment for research teams.
+          Published on LinkedIn.
         </p>
       </div>
       <a class="ccn-btn" href="${NEWSLETTER_URL}" target="_blank" rel="noopener">

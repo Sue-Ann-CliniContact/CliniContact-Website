@@ -30,11 +30,11 @@ export const PRODUCTS_PAGE = {
     {
       id: 'horizon',
       eyebrow: 'Horizon · Study startup & digital recruitment',
-      title: 'Protocol in. A recruitment package — and the campaigns to run it.',
-      desc: 'Give Horizon a ClinicalTrials.gov link, a protocol PDF, or pasted protocol text. In about an hour you have the recruitment asset pack, the study-specific marketing strategy, and — where community reach matters — the Bridge outreach strategy, every compliance flag cited to its source. Then we run it: you set your ad spend, and we build and manage the digital campaigns to that strategy. It is managed digital recruitment, not a folder of materials handed back to you.',
+      title: 'Protocol in. A recruitment package, and the campaigns to run it.',
+      desc: 'Give Horizon a ClinicalTrials.gov link, a protocol PDF, or pasted protocol text. In about an hour you have the recruitment asset pack, the study-specific marketing strategy, and the Bridge outreach strategy where community reach matters. Every compliance flag is cited to its source. Then we run it: you set your ad spend, and we build and manage the digital campaigns to that strategy. It is managed digital recruitment, not a folder of materials handed back to you.',
       bullets: [
         'Recruitment package and study-specific marketing strategy in about an hour',
-        'We build and manage the digital ad campaigns — you set the ad spend, no management fee',
+        'We build and manage the digital ad campaigns; you set the ad spend, no management fee',
         'Site-level scoping and protocol amendments applied at intake',
         // Two different measures, deliberately kept apart: ~1 hour is generation
         // time; 9 days is elapsed time through IRB readiness, which includes
@@ -44,7 +44,7 @@ export const PRODUCTS_PAGE = {
       screenshot: 'horizonIntake',
       scale: {
         label: 'At organization scale',
-        body: 'Import every site from the protocol and Horizon builds a recruitment profile for each — materials matched to the population around that site, held to one standard across all of them, and managed centrally. Marketing strategy runs across sites so you can see cost-per and expected yield site by site.',
+        body: 'Import every site from the protocol and Horizon builds a recruitment profile for each: materials matched to the population around that site, held to one standard across all of them, and managed centrally. Marketing strategy runs across sites so you can see cost-per and expected yield site by site.',
         points: [
           'Site profiles created automatically from the study protocol',
           'Population-matched materials, one standard across every site',
@@ -61,7 +61,7 @@ export const PRODUCTS_PAGE = {
       reverse: true,
       eyebrow: 'Bridge · Referral pathways',
       title: 'Open referral pathways into underrepresented populations.',
-      desc: 'Paid media reaches participants already searching. Bridge reaches the ones who are not — through advocacy organizations, community clinics and provider networks matched to your indication and each site’s catchment area. It is how a Diversity Action Plan gets executed rather than stated, with partner-level reporting a sponsor can put in front of a reviewer.',
+      desc: 'Paid media reaches participants already searching. Bridge reaches the ones who are not, through advocacy organizations, community clinics and provider networks matched to your indication and each site’s catchment area. It is how a Diversity Action Plan gets executed rather than stated, with partner-level reporting a sponsor can put in front of a reviewer.',
       bullets: [
         'Partner organizations matched by indication and site catchment area',
         'Executes against FDA Diversity Action Plan commitments',
@@ -71,7 +71,7 @@ export const PRODUCTS_PAGE = {
       screenshot: 'bridgeDashboard',
       scale: {
         label: 'At organization scale',
-        body: 'One program runs across your sites, with a reporting dashboard for each — so every site sees the population around it, and the organization sees all of them. The organization carries the program fee; each site gets its own relevant view.',
+        body: 'One program runs across your sites, with a reporting dashboard for each, so every site sees the population around it and the organization sees all of them. The organization carries the program fee; each site gets its own relevant view.',
         points: [
           'One program, a per-site reporting dashboard for each location',
           'Each site sees its local population; the organization sees every site',
@@ -87,7 +87,7 @@ export const PRODUCTS_PAGE = {
       id: 'smart-screener',
       eyebrow: 'Smart Screener · Prescreening',
       title: 'Apply your I/E criteria before anyone reaches a coordinator.',
-      desc: 'Branching logic built directly from your inclusion and exclusion criteria, with SMS one-time-passcode verification and IP validation for decentralized studies. Every record arrives carrying its prescreen outcome and the criterion that excluded it — and those outcomes feed back into the ad targeting, so the campaigns learn to optimize for qualified referrals in real time, not just raw lead volume.',
+      desc: 'Branching logic built directly from your inclusion and exclusion criteria, with SMS one-time-passcode verification and IP validation for decentralized studies. Every record arrives carrying its prescreen outcome and the criterion that excluded it. Those outcomes feed back into the ad targeting, so the campaigns learn to optimize for qualified referrals in real time, not just raw lead volume.',
       bullets: [
         'Branching logic built from your inclusion/exclusion criteria',
         'SMS OTP verification and IP validation for decentralized studies',
@@ -104,12 +104,12 @@ export const PRODUCTS_PAGE = {
       id: 'vision',
       reverse: true,
       eyebrow: 'Vision · Participant record',
-      title: 'One participant record — or routed straight into your system of record.',
-      desc: 'Inbound SMS and email resolve against the correct participant across every study, so outreach history sits in one chronological thread rather than across coordinator inboxes. And where your team already works in REDCap, Qualtrics or CRIO, we build the handoff with your data team during onboarding — prescreened referrals land in your system of record with their eligibility outcome attached, so nothing is re-keyed.',
+      title: 'One participant record, or routed straight into your system of record.',
+      desc: 'Inbound SMS and email resolve against the correct participant across every study, so outreach history sits in one chronological thread rather than across coordinator inboxes. And where your team already works in REDCap, Qualtrics or CRIO, we build the handoff with your data team during onboarding, so prescreened referrals land in your system of record with their eligibility outcome attached and nothing is re-keyed.',
       bullets: [
         // Scoped per engagement, not an off-the-shelf connector — worded so a
         // technical reviewer is not misled into expecting a prebuilt integration.
-        'Handoff into your system of record — REDCap, Qualtrics, CRIO or your own',
+        'Handoff into your system of record: REDCap, Qualtrics, CRIO or your own',
         'Reporting and analytics generated automatically for every study',
         'Two-way SMS and email resolved to the participant record',
         'Role-scoped access and full audit trail for coordinators, sponsors and monitors',
@@ -134,9 +134,9 @@ export const HARD_PROTOCOLS = {
   heading: 'Built for protocols that stall in recruitment.',
   sub: 'Restrictive eligibility, controlled substances, pediatric assent, multi-arm allocation. These are the protocols teams bring to us after a first recruitment approach underdelivers.',
   items: [
-    { stat: 'Schedule I', label: 'Controlled-substance protocol — psilocybin with SAINT rTMS for treatment-resistant depression. Prescreen gates applied upfront so most submissions never reached study staff.', study: 'dell-trd-psilocybin' },
+    { stat: 'Schedule I', label: 'Controlled-substance protocol: psilocybin with SAINT rTMS for treatment-resistant depression. Prescreen gates applied upfront so most submissions never reached study staff.', study: 'dell-trd-psilocybin' },
     { stat: '9 I/E criteria', label: 'Moderate-to-severe opioid use disorder. Ineligible respondents excluded, with reason, ahead of site handoff.', study: 'oud-oklahoma' },
-    { stat: '2-arm allocation', label: 'CANNHEART — five eligibility gates confirmed and each candidate routed to the correct study arm before coordinator contact.', study: 'cannheart-miami' },
+    { stat: '2-arm allocation', label: 'CANNHEART: five eligibility gates confirmed and each candidate routed to the correct study arm before coordinator contact.', study: 'cannheart-miami' },
     { stat: '8-section prescreen', label: 'Early life stress and depression at McLean. Sites received fully characterized candidate records rather than contact details.', study: 'mclean-early-life-stress' },
   ],
 };

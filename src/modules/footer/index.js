@@ -35,7 +35,7 @@ function mount(el) {
                 <div class="ccf-brand">
                   <div class="ccf-logo"><img src="${LOGO_SRC}" alt="CliniContact logo" loading="lazy" /></div>
                   <p class="ccf-sub">
-                    Enrollment partner for research teams — targeted outreach, smart screening,
+                    Enrollment partner for research teams: targeted outreach, smart screening,
                     and validated handoff to your site.
                   </p>
                   <div class="ccf-actions">

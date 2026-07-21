@@ -108,7 +108,7 @@ export const PENDING_CONSENT = [
   { email: 'michelle.chen2@rutgers.edu', score: 10, note: 'Credible leads; recruitment finished a month early.' },
   { email: 'tmhudson@umc.edu', score: 10, note: 'Flexible, adjusted outreach to recruitment needs.' },
   { email: 'merrill.landers@unlv.edu', score: 10, note: 'Praises dashboard and targeted-ad productivity.' },
-  { email: 'tjohnson@nccr.com', score: 10, note: 'Site network (NCCR) — useful for the SMO segment.' },
+  { email: 'tjohnson@nccr.com', score: 10, note: 'Site network (NCCR), useful for the SMO segment.' },
   { email: 'archana.malagi@cshs.org', score: 9, note: 'Cedars-Sinai; quick to respond, implements changes immediately.' },
   { email: 'kmpita@fiu.edu', score: 9, note: 'Positive but paired with front-page usability criticism.' },
 ];

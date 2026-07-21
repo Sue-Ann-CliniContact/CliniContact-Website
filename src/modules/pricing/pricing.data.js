@@ -29,7 +29,7 @@ export const TIERS = [
     tagline: 'Study startup & digital recruitment',
     price: '$800',
     unit: '/month',
-    priceNote: 'One study, one site. We build and manage the campaigns; you set the ad spend — no management fee on it.',
+    priceNote: 'One study, one site. We build and manage the campaigns; you set the ad spend, with no management fee on it.',
     features: [
       'Recruitment package + study-specific marketing strategy in ~1 hour',
       'Managed digital ad campaigns run to your strategy',
@@ -77,7 +77,7 @@ export const TIERS = [
  * individual sites, and one-off trials. Everything organizational is a custom
  * model built with the buyer, which is what this band frames.
  */
-export const ENTRY_LABEL = 'For a single study at a single site — academics, individual sites and trials';
+export const ENTRY_LABEL = 'For a single study at a single site: academics, individual sites and trials';
 
 /**
  * Enterprise band, framed as a consultative custom model rather than a fixed
@@ -86,7 +86,7 @@ export const ENTRY_LABEL = 'For a single study at a single site — academics, i
 export const ENTERPRISE = {
   eyebrow: 'Site networks · SMOs · CROs · Sponsors',
   name: 'We build the pricing model with you.',
-  desc: 'Running across many sites, studies or indications is never one-size-fits-all. We scope a flat-fee model around your portfolio — Horizon site profiles managed centrally, Bridge programs with per-site dashboards, and organization-wide Vision — so the economics fit how you actually operate.',
+  desc: 'Running across many sites, studies or indications is never one-size-fits-all. We scope a flat-fee model around your portfolio: Horizon site profiles managed centrally, Bridge programs with per-site dashboards, and organization-wide Vision, so the economics fit how you actually operate.',
   models: [
     'Flat fee per site, across multiple studies',
     'Flat fee per study, across multiple sites',

@@ -31,7 +31,7 @@ function mediaFor(s) {
   if (shot) {
     // Native width/height prevent layout shift while the image loads.
     return `<a class="ccx-shot${shot.dark ? ' is-dark' : ''}" href="${shot.src}" target="_blank" rel="noopener"
-        data-ratio="${(shot.h / shot.w).toFixed(4)}" aria-label="${shot.alt} — open full size">
+        data-ratio="${(shot.h / shot.w).toFixed(4)}" aria-label="${shot.alt}, open full size">
         <img src="${shot.src}" alt="${shot.alt}" width="${shot.w}" height="${shot.h}" loading="lazy" />
         <span class="ccx-shot-hint">Open full size &#8599;</span>
       </a>`;
