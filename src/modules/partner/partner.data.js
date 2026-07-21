@@ -51,8 +51,8 @@ export const PARTNER_PAGE = {
 
   principles: [
     {
-      title: 'We do not promise enrollment numbers',
-      body: 'Consent and enrollment happen at your site, on your protocol, with your staff. We commit to what we control: verified, prescreened referrals that meet your criteria, and honest reporting on what each channel costs.',
+      title: 'We work with your budget and tell you the truth',
+      body: 'We build a plan around the budget you have, and we give you an honest picture of what it can realistically expect — before you spend it, not after. Consent and enrollment happen at your site, so we do not promise enrollment numbers; we commit to what we control: verified, prescreened referrals that meet your criteria, and straight reporting on what each channel delivers.',
     },
     {
       title: 'Your systems stay your systems',
