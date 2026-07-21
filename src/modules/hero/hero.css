@@ -100,26 +100,43 @@
 }
 .cc-hero .cch-btn.primary:hover { background: #6bb2fa; border-color: #6bb2fa; }
 
-/* Journey spine — the four stages, named by product */
+/* Journey spine — the four stages, named by product. A connecting arrow between
+   cards signals the funnel flow (a real process cue, not decoration). */
 .cc-hero .cch-spine {
-  margin: clamp(30px, 4vw, 52px) auto 0;
+  margin: clamp(36px, 4.5vw, 60px) auto 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 12px;
   max-width: 1320px;
   text-align: left;
 }
-@media (min-width: 720px) { .cc-hero .cch-spine { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1040px) { .cc-hero .cch-spine { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 720px) { .cc-hero .cch-spine { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (min-width: 1040px) { .cc-hero .cch-spine { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
 
 .cc-hero .cch-step {
   position: relative;
-  padding: 18px 16px;
-  border-radius: 12px;
+  padding: 26px 22px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   transition: border-color 0.18s ease, background 0.18s ease;
   display: block;
+}
+/* Flow arrow sitting in the gap to the right of each card (all but the last),
+   only where the four sit in a single row. */
+@media (min-width: 1040px) {
+  .cc-hero .cch-step:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 700;
+    color: rgba(75, 160, 248, 0.7);
+    z-index: 2;
+  }
 }
 /* Accent rule on top rather than a lift-and-glow — steadier, less consumer. */
 .cc-hero .cch-step::before {
@@ -142,17 +159,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px; height: 22px;
-  border-radius: 6px;
-  font-size: 11px;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 800;
   color: var(--cc-accent);
-  background: rgba(75, 160, 248, 0.14);
-  border: 1px solid rgba(75, 160, 248, 0.3);
-  margin-bottom: 12px;
+  background: rgba(75, 160, 248, 0.16);
+  border: 1px solid rgba(75, 160, 248, 0.32);
+  margin-bottom: 16px;
 }
 .cc-hero .cch-step-stage {
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 800;
@@ -163,17 +180,17 @@
 }
 .cc-hero .cch-step-name {
   display: block;
-  margin-top: 4px;
-  font-size: 19px;
+  margin-top: 5px;
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   color: #fff;
 }
 .cc-hero .cch-step-desc {
-  margin: 7px 0 0;
-  font-size: 14.5px;
+  margin: 9px 0 0;
+  font-size: 15px;
   line-height: 1.5;
-  color: rgba(234, 240, 255, 0.62);
+  color: rgba(234, 240, 255, 0.64);
 }
 
 .cc-hero .cch-pills {

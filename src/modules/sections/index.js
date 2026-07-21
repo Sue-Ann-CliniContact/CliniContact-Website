@@ -57,36 +57,55 @@ const aliasAnchors = (s) =>
  * distinction between the academic/site buyer and the network/SMO/CRO/sponsor
  * buyer.
  */
+/**
+ * "At organization scale" callout. Rendered full-width below the copy/media
+ * grid (not inside the copy column) so it does not make one side taller than
+ * the other — which is what made the Horizon section look lopsided.
+ */
 const scaleBlock = (scale) =>
   !scale
     ? ''
     : `<div class="ccx-scale">
         <div class="ccx-scale-label">${scale.label}</div>
-        <p class="ccx-scale-body">${scale.body}</p>
-        <ul class="ccx-scale-points">
-          ${scale.points.map((p) => `<li>${p}</li>`).join('')}
-        </ul>
+        <div class="ccx-scale-cols">
+          <p class="ccx-scale-body">${scale.body}</p>
+          <ul class="ccx-scale-points">
+            ${scale.points.map((p) => `<li>${p}</li>`).join('')}
+          </ul>
+        </div>
       </div>`;
 
-const section = (s, i) => `
-  ${aliasAnchors(s)}
-  <div id="${s.id}" class="ccx-section${(s.reverse ?? i % 2 === 1) ? ' reverse' : ''} reveal">
-    <div class="ccx-inner">
-      <div class="ccx-copy">
-        <div class="ccx-eyebrow">${s.eyebrow}</div>
-        <h2 class="ccx-title">${s.title}</h2>
-        <p class="ccx-desc">${s.desc}</p>
-        <ul class="ccx-bullets">
-          ${s.bullets.map((b) => `<li class="ccx-li"><div class="ccx-check">&#10003;</div><span>${b}</span></li>`).join('')}
-        </ul>
+/**
+ * Each product/audience section is its own full-width band with an alternating
+ * background, rather than a card in a centered column. This is what makes the
+ * page read as flowing edge-to-edge instead of a stack of centered blocks, and
+ * it gives each section a distinct backdrop so they stand apart.
+ */
+const section = (s, i) => {
+  const reverse = s.reverse ?? i % 2 === 1;
+  const band = i % 2 === 0 ? 'ccx-band-a' : 'ccx-band-b';
+  return `
+    ${aliasAnchors(s)}
+    <section id="${s.id}" class="cc-fullbleed ccx-band ${band}${reverse ? ' reverse' : ''} reveal">
+      <div class="ccx-band-inner">
+        <div class="ccx-inner">
+          <div class="ccx-copy">
+            <div class="ccx-eyebrow">${s.eyebrow}</div>
+            <h2 class="ccx-title">${s.title}</h2>
+            <p class="ccx-desc">${s.desc}</p>
+            <ul class="ccx-bullets">
+              ${s.bullets.map((b) => `<li class="ccx-li"><div class="ccx-check">&#10003;</div><span>${b}</span></li>`).join('')}
+            </ul>
+            ${s.ctas?.length ? `<div class="ccx-cta-row">${s.ctas.map(cta).join('')}</div>` : ''}
+          </div>
+          <div class="ccx-media">
+            ${mediaFor(s)}
+          </div>
+        </div>
         ${scaleBlock(s.scale)}
-        ${s.ctas?.length ? `<div class="ccx-cta-row">${s.ctas.map(cta).join('')}</div>` : ''}
       </div>
-      <div class="ccx-media">
-        ${mediaFor(s)}
-      </div>
-    </div>
-  </div>`;
+    </section>`;
+};
 
 /** Difficulty-led proof strip. Deliberately carries no volume metrics. */
 function proofMarkup(p) {
@@ -122,23 +141,21 @@ function mount(el, data) {
   el.classList.add('cc-sections');
 
   el.innerHTML = `
-    <div class="cc-fullbleed">
-      <div class="ccx-bg">
-        <div class="ccx-container">
-          <p class="ccx-kicker reveal">${page.kicker}</p>
-          <h1 class="ccx-h1 reveal">${page.heading}</h1>
-          <p class="ccx-sub reveal">${page.sub}</p>
-          ${
-            page.showJumps
-              ? `<div class="ccx-jumps">${page.sections
-                  .map((s) => `<a class="ccx-chip reveal" href="#${s.id}"><span class="ccx-dot"></span> ${s.eyebrow}</a>`)
-                  .join('')}</div>`
-              : ''
-          }
-          <div class="ccx-stack">${page.sections.map(section).join('')}</div>
-        </div>
+    <div class="cc-fullbleed ccx-band ccx-header-band">
+      <div class="ccx-band-inner ccx-header">
+        <p class="ccx-kicker reveal">${page.kicker}</p>
+        <h1 class="ccx-h1 reveal">${page.heading}</h1>
+        <p class="ccx-sub reveal">${page.sub}</p>
+        ${
+          page.showJumps
+            ? `<div class="ccx-jumps">${page.sections
+                .map((s) => `<a class="ccx-chip reveal" href="#${s.id}"><span class="ccx-dot"></span> ${s.eyebrow}</a>`)
+                .join('')}</div>`
+            : ''
+        }
       </div>
     </div>
+    ${page.sections.map(section).join('')}
   `;
 
   /**

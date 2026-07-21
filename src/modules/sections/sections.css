@@ -10,15 +10,32 @@
 .cc-sections a { color: inherit; text-decoration: none; }
 .cc-sections img { max-width: 100%; display: block; }
 
-/* Flat neutral ground — the saturated gradient stack read as consumer SaaS. */
-.cc-sections .ccx-bg {
-  padding: clamp(48px, 5vw, 80px) 0;
-  background: #fcfdff;
-  border-top: 1px solid rgba(15, 23, 42, 0.07);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-  overflow: hidden;
+/* ---- Full-width bands -----------------------------------------------------
+   Each section is a band that spans the viewport (via .cc-fullbleed) with an
+   alternating background, so the page flows edge-to-edge instead of stacking
+   centered cards. Content is centered within at a generous max-width. */
+.cc-sections .ccx-band {
+  padding: clamp(44px, 5vw, 84px) 22px;
 }
+.cc-sections .ccx-band-a { background: #ffffff; }
+.cc-sections .ccx-band-b { background: #eef3fb; }
+.cc-sections .ccx-header-band {
+  background: linear-gradient(180deg, #f4f7fb, #eef3fb);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding-bottom: clamp(30px, 3.5vw, 52px);
+}
+.cc-sections .ccx-band + .ccx-band { border-top: 1px solid rgba(15, 23, 42, 0.06); }
 
+.cc-sections .ccx-band-inner {
+  width: 100%;
+  max-width: var(--x-max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cc-sections .ccx-header { text-align: center; }
+
+/* Legacy container kept for the proof strip, which still uses it. */
 .cc-sections .ccx-container {
   width: 100%;
   max-width: var(--x-max);
@@ -81,8 +98,6 @@
   flex: 0 0 auto;
 }
 
-.cc-sections .ccx-stack { margin-top: clamp(26px, 3.4vw, 44px); display: flex; flex-direction: column; gap: clamp(16px, 2vw, 22px); }
-
 /* Legacy anchor targets. Zero-height, but offset so a jump clears the sticky nav. */
 .cc-sections .ccx-alias { display: block; height: 0; scroll-margin-top: 110px; }
 
@@ -115,23 +130,15 @@
 .cc-sections .ccx-bg.is-dark .ccx-proof-item b { color: #fff; }
 .cc-sections .ccx-bg.is-dark .ccx-proof-item span { color: rgba(234, 240, 255, 0.62); }
 
-.cc-sections .ccx-section {
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.05);
-  overflow: hidden;
-  position: relative;
-  scroll-margin-top: 110px;
-}
+/* Band is the section now; it sets its own scroll offset for anchor jumps. */
+.cc-sections .ccx-band { scroll-margin-top: 90px; position: relative; }
 
-.cc-sections .ccx-inner { display: grid; grid-template-columns: 1fr; gap: 18px; padding: clamp(22px, 2.6vw, 40px); align-items: center; }
+.cc-sections .ccx-inner { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: center; }
 
 @media (min-width: 920px) {
-  .cc-sections .ccx-inner { grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 3.5vw, 56px); }
-  .cc-sections .ccx-section.reverse .ccx-inner { grid-template-columns: 0.95fr 1.05fr; }
-  .cc-sections .ccx-section.reverse .ccx-copy { order: 2; }
-  .cc-sections .ccx-section.reverse .ccx-media { order: 1; }
+  .cc-sections .ccx-inner { grid-template-columns: 1fr 1fr; gap: clamp(36px, 4vw, 72px); }
+  .cc-sections .ccx-band.reverse .ccx-copy { order: 2; }
+  .cc-sections .ccx-band.reverse .ccx-media { order: 1; }
 }
 
 .cc-sections .ccx-eyebrow {
@@ -176,8 +183,11 @@
   padding: 13px 14px;
   border-radius: 14px;
   border: 1px solid rgba(15, 23, 42, 0.1);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.7);
 }
+/* On the white band there is no contrast from a translucent-white pill, so give
+   it a faint tinted fill instead. */
+.cc-sections .ccx-band-a .ccx-li { background: #f5f8fc; }
 .cc-sections .ccx-check {
   width: 18px;
   height: 18px;
@@ -327,37 +337,41 @@
   font-weight: 650;
 }
 
-/* "At organization scale" callout — visually distinct from the base bullets so
-   the single-site → org-level jump reads at a glance. */
+/* "At organization scale" callout — full width beneath the copy/media grid, so
+   it balances the section instead of lengthening one column. */
 .cc-sections .ccx-scale {
-  margin-top: 16px;
-  padding: 16px 16px 14px;
-  border-radius: 12px;
-  background: #0b1220;
+  margin-top: clamp(22px, 2.6vw, 36px);
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: 16px;
+  background:
+    radial-gradient(700px 300px at 12% 0%, rgba(75, 160, 248, 0.14), transparent 60%),
+    linear-gradient(180deg, #0f1b33, #0b1220);
   color: #eaf0ff;
 }
 .cc-sections .ccx-scale-label {
   display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 800;
   color: var(--cc-accent);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
+.cc-sections .ccx-scale-cols { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+@media (min-width: 780px) { .cc-sections .ccx-scale-cols { grid-template-columns: 1fr 1fr; gap: 32px; } }
 .cc-sections .ccx-scale-body {
-  margin: 0 0 10px;
-  font-size: 13px;
-  line-height: 1.55;
-  color: rgba(234, 240, 255, 0.72);
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(234, 240, 255, 0.74);
 }
-.cc-sections .ccx-scale-points { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.cc-sections .ccx-scale-points { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; align-content: start; }
 .cc-sections .ccx-scale-points li {
   display: flex;
   gap: 8px;
-  font-size: 12.5px;
-  line-height: 1.4;
-  color: rgba(234, 240, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(234, 240, 255, 0.92);
   font-weight: 600;
 }
 .cc-sections .ccx-scale-points li::before {
