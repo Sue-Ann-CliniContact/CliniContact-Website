@@ -20,6 +20,12 @@ import './modules/footer/index.js';
 /**
  * Measure the scrollbar so .cc-fullbleed can subtract it from 100vw. Re-measured
  * on resize because scrollbars appear and disappear as content height changes.
+ *
+ * Timing matters: at DOMContentLoaded the page is often too short to have a
+ * vertical scrollbar yet (images still loading), so a single early measurement
+ * can read 0 and let full-bleed bands overflow by the scrollbar width until
+ * something else triggers a re-measure. So we also measure on `load` (images
+ * done, full height known) and on the next frame.
  */
 function measureScrollbar() {
   const sbw = window.innerWidth - document.documentElement.clientWidth;
@@ -29,7 +35,9 @@ function measureScrollbar() {
 ready(() => {
   injectCSS('tokens', tokens);
   measureScrollbar();
+  requestAnimationFrame(measureScrollbar);
   window.addEventListener('resize', measureScrollbar, { passive: true });
+  window.addEventListener('load', measureScrollbar, { once: true });
   initContact();
   mountAll();
 });

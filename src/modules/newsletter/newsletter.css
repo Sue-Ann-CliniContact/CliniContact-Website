@@ -8,7 +8,7 @@
 .cc-news, .cc-news * { box-sizing: border-box; }
 
 .cc-news .ccn-inner {
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   align-items: center;

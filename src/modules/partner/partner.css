@@ -12,7 +12,7 @@
   border-top: 1px solid rgba(15, 23, 42, 0.07);
   border-bottom: 1px solid rgba(15, 23, 42, 0.07);
 }
-.cc-partner .ccpt-inner { max-width: 1120px; margin: 0 auto; }
+.cc-partner .ccpt-inner { max-width: 1320px; margin: 0 auto; }
 
 .cc-partner .ccpt-kicker {
   text-align: center;
@@ -28,17 +28,17 @@
   margin: 0 auto 12px;
   font-weight: 800;
   letter-spacing: -0.025em;
-  line-height: 1.12;
-  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.1;
+  font-size: clamp(30px, 3.6vw, 44px);
   max-width: 24ch;
   color: var(--cc-ink);
 }
 .cc-partner .ccpt-sub {
   text-align: center;
   margin: 0 auto;
-  color: rgba(15, 23, 42, 0.68);
-  font-size: clamp(14px, 1.7vw, 16px);
-  line-height: 1.55;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: clamp(16px, 1.7vw, 19px);
+  line-height: 1.6;
   max-width: 66ch;
 }
 
@@ -91,13 +91,13 @@
 
 .cc-partner .ccpt-title {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   letter-spacing: -0.015em;
   color: var(--cc-ink);
   line-height: 1.25;
 }
-.cc-partner .ccpt-body { margin: 0; font-size: 14px; line-height: 1.6; color: rgba(15, 23, 42, 0.7); }
+.cc-partner .ccpt-body { margin: 0; font-size: 15.5px; line-height: 1.62; color: rgba(15, 23, 42, 0.72); }
 
 .cc-partner .ccpt-swap {
   display: grid;
@@ -118,7 +118,7 @@
   color: rgba(15, 23, 42, 0.45);
   margin-bottom: 4px;
 }
-.cc-partner .ccpt-swap span { font-size: 12.5px; line-height: 1.45; color: rgba(15, 23, 42, 0.72); font-weight: 600; }
+.cc-partner .ccpt-swap span { font-size: 13.5px; line-height: 1.45; color: rgba(15, 23, 42, 0.74); font-weight: 600; }
 
 /* ---- Principles ---- */
 
@@ -139,12 +139,12 @@
 }
 .cc-partner .ccpt-principle h3 {
   margin: 0 0 8px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.012em;
   color: var(--cc-ink);
 }
-.cc-partner .ccpt-principle p { margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(15, 23, 42, 0.68); }
+.cc-partner .ccpt-principle p { margin: 0; font-size: 15px; line-height: 1.62; color: rgba(15, 23, 42, 0.7); }
 
 .cc-partner .ccpt-cta {
   margin: clamp(30px, 4vw, 44px) auto 0;

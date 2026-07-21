@@ -24,7 +24,7 @@
 /* Self included — .cc-stats carries its own padding. */
 .cc-stats, .cc-stats * { box-sizing: border-box; }
 
-.cc-stats .ccs-inner { max-width: 1120px; margin: 0 auto; }
+.cc-stats .ccs-inner { max-width: 1320px; margin: 0 auto; }
 .cc-stats .ccs-header { display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
 
 .cc-stats .ccs-kicker {

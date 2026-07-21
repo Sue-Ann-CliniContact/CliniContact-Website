@@ -10,7 +10,7 @@
    as content-box that padding added to width:100% and scrolled the page. */
 .cc-logos, .cc-logos * { box-sizing: border-box; }
 
-.cc-logos .ccl-inner { max-width: 1180px; margin: 0 auto; }
+.cc-logos .ccl-inner { max-width: 1320px; margin: 0 auto; }
 
 .cc-logos .ccl-head { text-align: center; margin-bottom: clamp(18px, 2.4vw, 30px); }
 .cc-logos .ccl-eyebrow {

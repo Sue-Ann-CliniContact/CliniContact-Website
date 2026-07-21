@@ -8,7 +8,7 @@
 .cc-work a { color: inherit; text-decoration: none; }
 .cc-work button { font-family: inherit; }
 
-.cc-work .cw-wrap { max-width: 1180px; margin: 0 auto; padding: clamp(18px, 2.8vw, 34px) clamp(14px, 2.6vw, 24px); }
+.cc-work .cw-wrap { max-width: 1320px; margin: 0 auto; padding: clamp(18px, 2.8vw, 34px) clamp(14px, 2.6vw, 24px); }
 
 .cc-work .cw-head { text-align: center; margin-bottom: 14px; }
 .cc-work .cw-kicker {
@@ -22,7 +22,7 @@
 .cc-work .cw-dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(75, 160, 248, 0.95); box-shadow: 0 0 0 6px rgba(75, 160, 248, 0.14); }
 .cc-work .cw-title { margin: 12px 0 6px; font-size: clamp(26px, 3.2vw, 44px); line-height: 1.06; letter-spacing: -0.03em; font-weight: 950; color: var(--cc-ink); }
 .cc-work .cw-title .grad { background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.cc-work .cw-sub { margin: 0 auto; max-width: 86ch; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.6; color: rgba(15, 23, 42, 0.68); }
+.cc-work .cw-sub { margin: 0 auto; max-width: 86ch; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.6; color: rgba(15, 23, 42, 0.7); }
 .cc-work .cw-divider { width: 72px; height: 4px; border-radius: 999px; background: rgba(75, 160, 248, 0.95); margin: 14px auto 0; }
 
 .cc-work .cw-stats { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -74,8 +74,8 @@
   background: rgba(50, 87, 235, 0.08); border: 1px solid rgba(50, 87, 235, 0.14);
   padding: 5px 9px; border-radius: 999px; white-space: nowrap;
 }
-.cc-work .cw-card-title { font-weight: 950; letter-spacing: -0.01em; color: var(--cc-ink); font-size: 16px; line-height: 1.25; }
-.cc-work .cw-desc { color: rgba(15, 23, 42, 0.74); font-size: 13.5px; line-height: 1.5; flex: 1 1 auto; }
+.cc-work .cw-card-title { font-weight: 950; letter-spacing: -0.01em; color: var(--cc-ink); font-size: 17.5px; line-height: 1.25; }
+.cc-work .cw-desc { color: rgba(15, 23, 42, 0.74); font-size: 14.5px; line-height: 1.5; flex: 1 1 auto; }
 
 .cc-work .cw-actions { padding: 12px 14px 14px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--cc-line); }
 .cc-work .cw-btn {

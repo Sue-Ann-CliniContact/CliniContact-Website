@@ -19,7 +19,7 @@
     linear-gradient(180deg, #0b1220, #0f1b33);
 }
 
-.cc-hero .cch-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+.cc-hero .cch-inner { max-width: 1320px; margin: 0 auto; text-align: center; }
 
 .cc-hero .cch-kicker {
   display: inline-flex;
@@ -62,8 +62,8 @@
 .cc-hero .cch-sub {
   margin: 0 auto;
   max-width: 62ch;
-  color: rgba(234, 240, 255, 0.68);
-  font-size: clamp(15px, 1.6vw, 19px);
+  color: rgba(234, 240, 255, 0.7);
+  font-size: clamp(17px, 1.7vw, 21px);
   line-height: 1.6;
 }
 
@@ -106,7 +106,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  max-width: 1120px;
+  max-width: 1320px;
   text-align: left;
 }
 @media (min-width: 720px) { .cc-hero .cch-spine { grid-template-columns: repeat(2, 1fr); } }
@@ -164,16 +164,16 @@
 .cc-hero .cch-step-name {
   display: block;
   margin-top: 4px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   letter-spacing: -0.015em;
   color: #fff;
 }
 .cc-hero .cch-step-desc {
-  margin: 6px 0 0;
-  font-size: 13px;
-  line-height: 1.45;
-  color: rgba(234, 240, 255, 0.6);
+  margin: 7px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: rgba(234, 240, 255, 0.62);
 }
 
 .cc-hero .cch-pills {

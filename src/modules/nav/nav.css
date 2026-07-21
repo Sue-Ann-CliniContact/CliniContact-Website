@@ -90,7 +90,7 @@
 
 .cc-nav .ccn-inner {
   width: 100%;
-  max-width: 1260px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: var(--cc-nav-pad-y) var(--cc-nav-pad-x);
   display: flex;

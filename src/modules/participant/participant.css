@@ -9,7 +9,7 @@
 .cc-participant, .cc-participant * { box-sizing: border-box; }
 
 .cc-participant .ccp-inner {
-  max-width: 1120px;
+  max-width: 1320px;
   margin: 0 auto;
   display: flex;
   align-items: center;
