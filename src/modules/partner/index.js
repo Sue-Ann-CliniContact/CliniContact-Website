@@ -44,7 +44,7 @@ function mount(el) {
         </div>
 
         <div class="ccpt-cta">
-          <button type="button" class="ccpt-btn" data-cc-contact>Request a quote</button>
+          <button type="button" class="ccpt-btn" data-cc-contact>Talk to our team</button>
         </div>
       </div>
     </div>

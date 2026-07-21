@@ -24,14 +24,14 @@ const WORK = 'https://www.clinicontact.com/our-work';
 export const PRODUCTS_PAGE = {
   kicker: 'The platform',
   heading: 'Four modules across the recruitment funnel.',
-  sub: 'Each module stands alone. Run together they hand off without re-keying: Horizon runs study startup and digital recruitment, Bridge opens community referral pathways, Smart Screener applies your I/E criteria, and Vision holds the participant record your coordinators work from.',
+  sub: 'Each module stands alone, and together they hand off without re-keying. Horizon runs startup and digital recruitment, Bridge opens community referral pathways, Smart Screener applies your criteria, and Vision holds the participant record.',
   showJumps: false,
   sections: [
     {
       id: 'horizon',
       eyebrow: 'Horizon · Study startup & digital recruitment',
       title: 'Protocol in. A recruitment package, and the campaigns to run it.',
-      desc: 'Give Horizon a ClinicalTrials.gov link, a protocol PDF, or pasted protocol text. In about an hour you have the recruitment asset pack, the study-specific marketing strategy, and the Bridge outreach strategy where community reach matters. Every compliance flag is cited to its source. Then we run it: you set your ad spend, and we build and manage the digital campaigns to that strategy. It is managed digital recruitment, not a folder of materials handed back to you.',
+      desc: 'Give Horizon a protocol link, a PDF, or pasted text, and about an hour later you have the recruitment package and marketing strategy. Then we run it: you set the ad spend, and we build and manage the digital campaigns. Managed recruitment, not a folder of materials handed back to you.',
       bullets: [
         'Recruitment package and study-specific marketing strategy in about an hour',
         'We build and manage the digital ad campaigns; you set the ad spend, no management fee',
@@ -53,7 +53,6 @@ export const PRODUCTS_PAGE = {
       },
       ctas: [
         { label: 'Watch the walkthrough', href: 'https://horizonai.clinicontact.com/walkthrough/general', primary: true, external: true, arrow: '→' },
-        { label: 'Request a quote', contact: true },
       ],
     },
     {
@@ -61,7 +60,7 @@ export const PRODUCTS_PAGE = {
       reverse: true,
       eyebrow: 'Bridge · Referral pathways',
       title: 'Open referral pathways into underrepresented populations.',
-      desc: 'Paid media reaches participants already searching. Bridge reaches the ones who are not, through advocacy organizations, community clinics and provider networks matched to your indication and each site’s catchment area. It is how a Diversity Action Plan gets executed rather than stated, with partner-level reporting a sponsor can put in front of a reviewer.',
+      desc: 'Paid media reaches participants already searching. Bridge reaches the ones who are not, through advocacy organizations, community clinics and provider networks matched to your indication and catchment area. It is how a Diversity Action Plan gets executed, not just stated.',
       bullets: [
         'Partner organizations matched by indication and site catchment area',
         'Executes against FDA Diversity Action Plan commitments',
@@ -87,7 +86,7 @@ export const PRODUCTS_PAGE = {
       id: 'smart-screener',
       eyebrow: 'Smart Screener · Prescreening',
       title: 'Apply your I/E criteria before anyone reaches a coordinator.',
-      desc: 'Branching logic built directly from your inclusion and exclusion criteria, with SMS one-time-passcode verification and IP validation for decentralized studies. Every record arrives carrying its prescreen outcome and the criterion that excluded it. Those outcomes feed back into the ad targeting, so the campaigns learn to optimize for qualified referrals in real time, not just raw lead volume.',
+      desc: 'Branching logic built from your inclusion and exclusion criteria, with SMS passcode verification and IP checks for decentralized studies. Every record arrives with its prescreen outcome and the reason it passed or failed. Those outcomes even train the ad targeting toward qualified referrals, not raw lead volume.',
       bullets: [
         'Branching logic built from your inclusion/exclusion criteria',
         'SMS OTP verification and IP validation for decentralized studies',
@@ -105,7 +104,7 @@ export const PRODUCTS_PAGE = {
       reverse: true,
       eyebrow: 'Vision · Participant record',
       title: 'One participant record, or routed straight into your system of record.',
-      desc: 'Inbound SMS and email resolve against the correct participant across every study, so outreach history sits in one chronological thread rather than across coordinator inboxes. And where your team already works in REDCap, Qualtrics or CRIO, we build the handoff with your data team during onboarding, so prescreened referrals land in your system of record with their eligibility outcome attached and nothing is re-keyed.',
+      desc: 'Inbound SMS and email resolve to the right participant across every study, so outreach lives on one timeline instead of scattered inboxes. And where your team works in REDCap, Qualtrics or CRIO, referrals land straight in your system of record, nothing re-keyed.',
       bullets: [
         // Scoped per engagement, not an off-the-shelf connector — worded so a
         // technical reviewer is not misled into expecting a prebuilt integration.
@@ -117,7 +116,6 @@ export const PRODUCTS_PAGE = {
       screenshot: 'visionConsole',
       ctas: [
         { label: 'See Vision', href: 'https://vision.clinicontact.com/', primary: true, external: true, arrow: '→' },
-        { label: 'Request a quote', contact: true },
       ],
     },
   ],

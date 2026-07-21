@@ -38,7 +38,6 @@ export const SOLUTIONS_PAGE = {
       illustration: ILLUSTRATIONS.funnel,
       ctas: [
         { label: 'Try a live screener', href: 'https://forms.clinicontact.com/form/example', primary: true, external: true, arrow: '→' },
-        { label: 'Request a quote', contact: true },
       ],
     },
     {
@@ -56,7 +55,6 @@ export const SOLUTIONS_PAGE = {
       illustration: ILLUSTRATIONS.irbTimeline,
       ctas: [
         { label: 'Watch the Horizon walkthrough', href: 'https://horizonai.clinicontact.com/walkthrough/general', primary: true, external: true, arrow: '→' },
-        { label: 'Request a quote', contact: true },
       ],
     },
     {
@@ -74,7 +72,6 @@ export const SOLUTIONS_PAGE = {
       illustration: ILLUSTRATIONS.automation,
       ctas: [
         { label: 'See Vision', href: 'https://vision.clinicontact.com/', primary: true, external: true, arrow: '→' },
-        { label: 'Request a quote', contact: true },
       ],
     },
     {
