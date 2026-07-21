@@ -42,10 +42,10 @@ export const PARTNER_PAGE = {
     {
       n: 4,
       window: 'Ongoing',
-      title: 'Outreach, prescreening and weekly review',
-      body: 'Recruitment runs across paid channels and, where representation targets apply, Bridge partner networks. Referrals arrive prescreened with eligibility outcome and exclusion reason attached. We review cost per qualified referral weekly and reallocate — you see the same numbers we do.',
+      title: 'Outreach, prescreening and real-time optimization',
+      body: 'Recruitment runs across paid channels and, where representation targets apply, Bridge partner networks. Every referral is prescreened, and those eligibility outcomes feed back into the targeting — so the Smart Screener teaches the campaigns to optimize for qualified referrals, not just lead volume. We watch it in real time, and you see the same numbers we do.',
       you: 'Site feedback on referral quality',
-      us: 'Prescreened referrals, weekly reporting, channel reallocation',
+      us: 'Prescreened referrals, real-time optimization toward qualified',
     },
   ],
 
