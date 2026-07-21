@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CliniContact — local harness</title>
+  <style>
+    body { margin: 0; background: #f8fafc; font-family: system-ui, sans-serif; }
+    .fake-page { padding: 40px 24px; max-width: 900px; margin: 0 auto; color: #0f172a; }
+    .fake-page h1 { font-size: 28px; }
+    .note { background: #fff; border: 1px solid rgba(15,23,42,.1); border-radius: 12px; padding: 16px; margin: 16px 0; }
+    code { background: #eef2ff; padding: 2px 6px; border-radius: 6px; font-size: 13px; }
+    .tall { height: 900px; }
+  </style>
+</head>
+<body>
+  <!-- This is the entire Webflow embed. 33 characters. -->
+  <div data-cc="nav"></div>
+
+  <div class="fake-page">
+    <h1>Local harness</h1>
+    <div class="note">
+      Simulates a Webflow page. The nav above is mounted from
+      <code>&lt;div data-cc="nav"&gt;&lt;/div&gt;</code> — everything else comes from the bundle.
+    </div>
+    <div class="note">
+      Any element with <code>data-cc-contact</code> opens the shared modal:
+      <button data-cc-contact>Request a proposal</button>
+    </div>
+    <div class="note">Legacy hero trigger still works:
+      <button data-cc-open-contact>Request a proposal (legacy attr)</button>
+    </div>
+    <div class="note">Scroll to confirm the nav stays sticky.</div>
+    <div class="tall"></div>
+    <div data-cc="stats"></div>
+  </div>
+
+  <div data-cc="footer"></div>
+
+  <script src="../dist/cc.min.js"></script>
+</body>
+</html>

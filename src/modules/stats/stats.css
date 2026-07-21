@@ -1,0 +1,115 @@
+/* Navy palette lives here, scoped — it used to sit on :root and bleed
+   --cc-text into every other section on the page. */
+.cc-stats {
+  --s-bg-top: #0b1220;
+  --s-bg-bot: #0f1b33;
+  --s-text: #eaf0ff;
+  --s-muted: rgba(234, 240, 255, 0.7);
+  --s-border: rgba(255, 255, 255, 0.1);
+  --s-card: rgba(255, 255, 255, 0.06);
+  --s-radius: 22px;
+
+  width: 100%;
+  padding: 28px 18px;
+  border-radius: calc(var(--s-radius) + 10px);
+  background:
+    radial-gradient(900px 380px at 12% 10%, rgba(50, 87, 235, 0.22), transparent 58%),
+    radial-gradient(800px 420px at 88% 0%, rgba(75, 160, 248, 0.2), transparent 55%),
+    linear-gradient(180deg, var(--s-bg-top), var(--s-bg-bot));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
+  font-family: var(--cc-font);
+  overflow: hidden;
+}
+/* Self included — .cc-stats carries its own padding. */
+.cc-stats, .cc-stats * { box-sizing: border-box; }
+
+.cc-stats .ccs-inner { max-width: 1120px; margin: 0 auto; }
+.cc-stats .ccs-header { display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+
+.cc-stats .ccs-kicker {
+  color: var(--s-text);
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding: 8px 14px;
+}
+.cc-stats .ccs-kicker::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(75, 160, 248, 0.95), rgba(50, 87, 235, 0.95), transparent);
+  opacity: 0.55;
+}
+
+.cc-stats .ccs-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 10px; }
+@media (min-width: 740px) {
+  .cc-stats .ccs-grid { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
+}
+
+.cc-stats .ccs-stat {
+  border-radius: var(--s-radius);
+  background: var(--s-card);
+  border: 1px solid var(--s-border);
+  padding: 18px 16px;
+  text-align: center;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease, background 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cc-stats .ccs-stat:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(75, 160, 248, 0.35); }
+.cc-stats .ccs-stat::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(600px 240px at 50% 0%, rgba(75, 160, 248, 0.18), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.cc-stats .ccs-stat:hover::before { opacity: 0.9; }
+.cc-stats .ccs-stat.is-visible { transform: translateY(0); opacity: 1; }
+
+.cc-stats .ccs-value {
+  font-weight: 950;
+  font-size: 42px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 6px 0 10px;
+  color: var(--s-text);
+}
+.cc-stats .ccs-count {
+  background: linear-gradient(135deg, #4ba0f8, #3257eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.25));
+}
+
+.cc-stats .ccs-label { color: var(--s-muted); font-size: 13px; line-height: 1.35; font-weight: 650; }
+
+@media (min-width: 740px) {
+  .cc-stats .ccs-stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: -7px;
+    width: 1px;
+    height: calc(100% - 36px);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-stats .ccs-stat { transition: none; }
+}

@@ -1,0 +1,93 @@
+.cc-logos {
+  width: 100%;
+  font-family: var(--cc-font);
+  padding: clamp(28px, 4vw, 52px) 18px;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+/* Self included, not just descendants — this element has its own padding, and
+   as content-box that padding added to width:100% and scrolled the page. */
+.cc-logos, .cc-logos * { box-sizing: border-box; }
+
+.cc-logos .ccl-inner { max-width: 1180px; margin: 0 auto; }
+
+.cc-logos .ccl-head { text-align: center; margin-bottom: clamp(18px, 2.4vw, 30px); }
+.cc-logos .ccl-eyebrow {
+  display: inline-block;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.5);
+}
+.cc-logos .ccl-title {
+  margin: 10px 0 0;
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--cc-ink);
+  line-height: 1.25;
+}
+.cc-logos .ccl-sub {
+  margin: 8px auto 0;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--cc-muted);
+}
+
+.cc-logos .ccl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 1.6vw, 18px);
+  align-items: center;
+}
+@media (min-width: 640px) { .cc-logos .ccl-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 980px) { .cc-logos .ccl-grid { grid-template-columns: repeat(6, 1fr); } }
+
+.cc-logos .ccl-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  background: rgba(255, 255, 255, 0.75);
+  min-height: 76px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.cc-logos .ccl-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(50, 87, 235, 0.18);
+  box-shadow: 0 14px 34px rgba(2, 6, 23, 0.08);
+}
+
+/* Logos arrive at wildly different intrinsic sizes and aspect ratios, so cap
+   both axes and let object-fit do the normalising. */
+.cc-logos .ccl-item img {
+  max-width: 100%;
+  max-height: 42px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  /* Desaturate at rest so the wall reads as one texture, colour on hover. */
+  filter: grayscale(100%);
+  opacity: 0.72;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.cc-logos .ccl-item:hover img { filter: grayscale(0%); opacity: 1; }
+
+.cc-logos .ccl-note {
+  margin: clamp(16px, 2vw, 24px) auto 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.5);
+  max-width: 70ch;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-logos .ccl-item, .cc-logos .ccl-item img { transition: none; }
+}

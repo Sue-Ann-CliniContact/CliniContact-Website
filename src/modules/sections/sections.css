@@ -1,0 +1,413 @@
+.cc-sections {
+  --x-max: min(1180px, 92vw);
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  font-family: var(--cc-font);
+  -webkit-font-smoothing: antialiased;
+}
+.cc-sections * { box-sizing: border-box; }
+.cc-sections a { color: inherit; text-decoration: none; }
+.cc-sections img { max-width: 100%; display: block; }
+
+/* Flat neutral ground — the saturated gradient stack read as consumer SaaS. */
+.cc-sections .ccx-bg {
+  padding: clamp(48px, 5vw, 80px) 0;
+  background: #fcfdff;
+  border-top: 1px solid rgba(15, 23, 42, 0.07);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+  overflow: hidden;
+}
+
+.cc-sections .ccx-container {
+  width: 100%;
+  max-width: var(--x-max);
+  margin: 0 auto;
+  padding: 0 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.cc-sections .ccx-kicker {
+  text-align: center;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(50, 87, 235, 0.92);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+.cc-sections .ccx-h1 {
+  text-align: center;
+  margin: 0 auto 12px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--cc-text);
+  line-height: 1.12;
+  font-size: clamp(25px, 3vw, 36px);
+  max-width: 26ch;
+}
+.cc-sections .ccx-sub {
+  text-align: center;
+  margin: 0 auto;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.55;
+  max-width: 70ch;
+}
+
+.cc-sections .ccx-jumps { margin: 22px auto 0; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.cc-sections .ccx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.65);
+  color: rgba(15, 23, 42, 0.86);
+  font-weight: 850;
+  font-size: 12px;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.cc-sections .ccx-chip:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.9); box-shadow: 0 12px 30px rgba(2, 6, 23, 0.1); }
+.cc-sections .ccx-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(75, 160, 248, 0.95);
+  box-shadow: 0 0 0 6px rgba(75, 160, 248, 0.14);
+  flex: 0 0 auto;
+}
+
+.cc-sections .ccx-stack { margin-top: clamp(26px, 3.4vw, 44px); display: flex; flex-direction: column; gap: clamp(16px, 2vw, 22px); }
+
+/* Legacy anchor targets. Zero-height, but offset so a jump clears the sticky nav. */
+.cc-sections .ccx-alias { display: block; height: 0; scroll-margin-top: 110px; }
+
+/* ---- Dark band ------------------------------------------------------------
+   Used by the protocol-complexity proof strip. Breaks up an otherwise
+   continuous white page and echoes Vision's console navy. */
+.cc-sections .ccx-bg.is-dark {
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(75, 160, 248, 0.14), transparent 62%),
+    linear-gradient(180deg, #0b1220, #0f1b33);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.cc-sections .ccx-bg.is-dark .ccx-kicker { color: var(--cc-accent); }
+.cc-sections .ccx-bg.is-dark .ccx-h1 { color: #fff; }
+.cc-sections .ccx-bg.is-dark .ccx-sub { color: rgba(234, 240, 255, 0.66); }
+
+.cc-sections .ccx-bg.is-dark .ccx-proof-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 2px solid var(--cc-accent);
+  box-shadow: none;
+}
+.cc-sections .ccx-bg.is-dark .ccx-proof-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(75, 160, 248, 0.42);
+  border-top-color: var(--cc-accent);
+  box-shadow: none;
+}
+.cc-sections .ccx-bg.is-dark .ccx-proof-item b { color: #fff; }
+.cc-sections .ccx-bg.is-dark .ccx-proof-item span { color: rgba(234, 240, 255, 0.62); }
+
+.cc-sections .ccx-section {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.05);
+  overflow: hidden;
+  position: relative;
+  scroll-margin-top: 110px;
+}
+
+.cc-sections .ccx-inner { display: grid; grid-template-columns: 1fr; gap: 14px; padding: clamp(18px, 2.3vw, 26px); align-items: center; }
+
+@media (min-width: 920px) {
+  .cc-sections .ccx-inner { grid-template-columns: 1.05fr 0.95fr; gap: 22px; }
+  .cc-sections .ccx-section.reverse .ccx-inner { grid-template-columns: 0.95fr 1.05fr; }
+  .cc-sections .ccx-section.reverse .ccx-copy { order: 2; }
+  .cc-sections .ccx-section.reverse .ccx-media { order: 1; }
+}
+
+.cc-sections .ccx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: rgba(15, 23, 42, 0.58);
+  margin: 0 0 10px;
+}
+.cc-sections .ccx-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
+  box-shadow: 0 10px 20px rgba(50, 87, 235, 0.22);
+}
+
+.cc-sections .ccx-title {
+  margin: 0 0 10px;
+  color: var(--cc-text);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.18;
+  font-size: clamp(19px, 2.1vw, 26px);
+  max-width: 34ch;
+}
+.cc-sections .ccx-desc { margin: 0 0 14px; color: rgba(15, 23, 42, 0.7); font-size: 14px; line-height: 1.6; max-width: 70ch; }
+
+.cc-sections .ccx-bullets { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 560px) {
+  .cc-sections .ccx-bullets { grid-template-columns: 1fr 1fr; }
+}
+.cc-sections .ccx-li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+}
+.cc-sections .ccx-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(75, 160, 248, 0.18);
+  border: 1px solid rgba(75, 160, 248, 0.35);
+  color: var(--cc-accent2);
+  flex: 0 0 auto;
+  margin-top: 1px;
+  font-weight: 950;
+  font-size: 12px;
+}
+.cc-sections .ccx-li span { color: rgba(15, 23, 42, 0.78); font-size: 13px; line-height: 1.35; font-weight: 700; }
+
+.cc-sections .ccx-media {
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f6f8fc;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+}
+.cc-sections .ccx-illustration {
+  position: relative;
+  height: 100%;
+  min-height: 210px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.55));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cc-sections .ccx-illustration > * { width: min(460px, 100%); height: auto; filter: drop-shadow(0 16px 26px rgba(2, 6, 23, 0.1)); }
+.cc-sections .ccx-illustration img { object-fit: contain; }
+
+/* ---- Product screenshots -------------------------------------------------
+   Dashboards are denser than a ~500px column can render legibly, so each is
+   top-anchored in a fixed-height frame, faded at the cut, and links to the
+   full image. Suggests a real product surface without pretending it is
+   readable at this size. */
+
+.cc-sections .ccx-shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-height: 440px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 16px rgba(2, 6, 23, 0.07);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cc-sections .ccx-shot:hover { border-color: rgba(50, 87, 235, 0.3); box-shadow: 0 8px 26px rgba(2, 6, 23, 0.11); }
+.cc-sections .ccx-shot.is-dark { background: #0b1220; border-color: rgba(15, 23, 42, 0.3); }
+
+.cc-sections .ccx-shot img { display: block; width: 100%; height: auto; }
+
+/* Fade at the crop line so the cut reads as intentional. */
+.cc-sections .ccx-shot::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 90px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.96));
+  pointer-events: none;
+}
+.cc-sections .ccx-shot.is-dark::after {
+  background: linear-gradient(180deg, rgba(11, 18, 32, 0), rgba(11, 18, 32, 0.96));
+}
+/* Short images don't reach the cap, so there is nothing to fade. */
+.cc-sections .ccx-shot.is-short::after { display: none; }
+
+.cc-sections .ccx-shot-hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.72);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.cc-sections .ccx-shot:hover .ccx-shot-hint,
+.cc-sections .ccx-shot:focus-visible .ccx-shot-hint { opacity: 1; }
+/* Video media panel. The screener walkthrough is a YouTube Short (9:16), so it
+   gets a portrait ratio on narrow screens and a letterboxed 16:9 on desktop. */
+.cc-sections .ccx-video {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #000;
+  box-shadow: 0 18px 52px rgba(2, 6, 23, 0.12);
+}
+.cc-sections .ccx-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+@media (max-width: 620px) {
+  .cc-sections .ccx-video iframe { aspect-ratio: 9 / 16; }
+}
+
+/* Difficulty-led proof strip */
+.cc-sections .ccx-proof {
+  margin-top: clamp(24px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 640px) { .cc-sections .ccx-proof { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1040px) { .cc-sections .ccx-proof { grid-template-columns: repeat(4, 1fr); } }
+
+.cc-sections .ccx-proof-item {
+  display: block;
+  padding: 20px 18px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-top: 2px solid var(--cc-accent2);
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.04);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cc-sections .ccx-proof-item:hover {
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+}
+.cc-sections .ccx-proof-item b {
+  display: block;
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cc-ink);
+}
+.cc-sections .ccx-proof-item span {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.68);
+  font-weight: 650;
+}
+
+/* "At organization scale" callout — visually distinct from the base bullets so
+   the single-site → org-level jump reads at a glance. */
+.cc-sections .ccx-scale {
+  margin-top: 16px;
+  padding: 16px 16px 14px;
+  border-radius: 12px;
+  background: #0b1220;
+  color: #eaf0ff;
+}
+.cc-sections .ccx-scale-label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--cc-accent);
+  margin-bottom: 8px;
+}
+.cc-sections .ccx-scale-body {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(234, 240, 255, 0.72);
+}
+.cc-sections .ccx-scale-points { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.cc-sections .ccx-scale-points li {
+  display: flex;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(234, 240, 255, 0.9);
+  font-weight: 600;
+}
+.cc-sections .ccx-scale-points li::before {
+  content: '→';
+  color: var(--cc-accent);
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.cc-sections .ccx-cta-row { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cc-sections .ccx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--cc-text);
+  font-weight: 900;
+  font-size: 13px;
+  font-family: inherit;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.cc-sections .ccx-btn:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.92); box-shadow: 0 14px 34px rgba(2, 6, 23, 0.1); }
+.cc-sections .ccx-btn.primary {
+  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
+  color: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/**
+ * Reveal animation, opt-in.
+ *
+ * The original embed set `.reveal { opacity: 0 }` unconditionally and relied on
+ * JS to un-hide it — so if the script never ran, the entire page rendered
+ * blank. That risk grows once the bundle is a CDN request. Here the hidden
+ * state only applies after JS adds [data-reveal], so no-JS means fully visible
+ * content rather than an empty page.
+ */
+.cc-sections[data-reveal] .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+.cc-sections[data-reveal] .reveal.show { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-sections[data-reveal] .reveal { opacity: 1; transform: none; transition: none; }
+}

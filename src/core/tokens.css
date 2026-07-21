@@ -1,0 +1,37 @@
+/* Brand tokens, lifted from the nav embed and promoted to page scope so every
+   module shares one palette instead of redeclaring it. */
+:root {
+  --cc-accent: #4ba0f8;
+  --cc-accent2: #3257eb;
+  --cc-ink: #0b1220;
+  --cc-text: #0f172a;
+  --cc-muted: #475569;
+  --cc-line: rgba(15, 23, 42, 0.1);
+  --cc-card: rgba(255, 255, 255, 0.86);
+  --cc-card2: rgba(255, 255, 255, 0.92);
+  --cc-shadow: 0 18px 60px rgba(2, 6, 23, 0.1);
+  --cc-radius: 18px;
+  --cc-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Inter, Arial, sans-serif;
+
+  /* Measured scrollbar width, set from JS. See .cc-fullbleed below. */
+  --cc-sbw: 0px;
+}
+
+/**
+ * Full-bleed utility: break an element out of its Webflow container to span the
+ * viewport.
+ *
+ * The naive version is `width:100vw; margin-left:-50vw`, which the old hero and
+ * footer embeds both used. But 100vw *includes* the scrollbar, so on any
+ * platform with a visible scrollbar the element is wider than the visible page
+ * and the whole site scrolls sideways. Subtracting the measured scrollbar width
+ * fixes it without touching global overflow, which would risk breaking the
+ * sticky nav.
+ */
+.cc-fullbleed {
+  position: relative;
+  left: 50%;
+  width: calc(100vw - var(--cc-sbw));
+  margin-left: calc((100vw - var(--cc-sbw)) / -2);
+  margin-right: calc((100vw - var(--cc-sbw)) / -2);
+}

@@ -1,0 +1,328 @@
+/* Scoped to .cc-nav so it can't leak into Webflow's own styles. */
+.cc-nav {
+  --cc-nav-pad-y: clamp(12px, 1.5vw, 26px);
+  --cc-nav-pad-x: clamp(12px, 2vw, 28px);
+  --cc-logo-h: clamp(32px, 4vw, 64px);
+  --cc-link-fs: clamp(14px, 1.1vw, 18px);
+  --cc-btn-fs: clamp(13px, 1vw, 17px);
+
+  position: sticky;
+  top: 0;
+  z-index: 9998;
+  width: 100%;
+  font-family: var(--cc-font);
+  isolation: isolate;
+}
+
+.cc-nav,
+.cc-nav * {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.cc-nav a { color: inherit; text-decoration: none; }
+.cc-nav button { font-family: inherit; border: none; background: transparent; cursor: pointer; }
+
+.cc-nav .ccn-bar {
+  position: relative;
+  background: linear-gradient(180deg, rgba(248, 252, 255, 0.92), rgba(241, 248, 255, 0.9));
+  border-bottom: 1px solid var(--cc-line);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.28s ease;
+}
+
+/* ---- Dark-at-top -----------------------------------------------------------
+   On pages that open with the dark hero, the nav starts navy so the two read as
+   one continuous band, then resolves to the normal light bar once scrolled.
+   Only applied when a dark hero is present — a dark nav over a white page would
+   be unreadable. The bar stays in flow (sticky, not fixed), so nothing shifts.
+
+   The navy is a separate overlay layer faded on opacity, rather than a
+   background swap: you cannot cross-fade a solid colour and a gradient, so a
+   direct `background` transition would snap or bleed. The overlay cross-fades
+   cleanly and never lets navy show through the light bar. */
+.cc-nav.is-dark .ccn-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #0b1220;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.cc-nav.is-dark.at-top .ccn-bar::after { opacity: 1; }
+/* Keep the actual nav content above the overlay. */
+.cc-nav.is-dark .ccn-inner,
+.cc-nav.is-dark .ccn-mobile { position: relative; z-index: 1; }
+
+.cc-nav.is-dark.at-top .ccn-bar {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+.cc-nav.is-dark.at-top .ccn-links { color: rgba(234, 240, 255, 0.86); }
+.cc-nav.is-dark.at-top .ccn-link:hover,
+.cc-nav.is-dark.at-top .ccn-dd > button:hover { background: rgba(255, 255, 255, 0.08); }
+
+/* The brand mark is dark two-tone artwork, invisible on navy. Rendering it
+   solid white is the reliable fix without a second asset; supplying a proper
+   reversed logo would preserve the two-tone treatment. */
+.cc-nav.is-dark.at-top .ccn-logo img { filter: brightness(0) invert(1); }
+
+.cc-nav.is-dark.at-top .ccn-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #eaf0ff;
+}
+.cc-nav.is-dark.at-top .ccn-btn.primary {
+  background: var(--cc-accent);
+  border-color: var(--cc-accent);
+  color: #06203f;
+}
+.cc-nav.is-dark.at-top .ccn-burger {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #eaf0ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-nav .ccn-bar { transition: none; }
+}
+
+.cc-nav .ccn-inner {
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: var(--cc-nav-pad-y) var(--cc-nav-pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cc-nav .ccn-brand { display: flex; align-items: center; min-width: 0; flex-shrink: 1; }
+.cc-nav .ccn-logo img { height: var(--cc-logo-h); max-width: 100%; width: auto; display: block; }
+
+.cc-nav .ccn-links {
+  display: none;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 24px);
+  color: rgba(15, 23, 42, 0.88);
+  font-weight: 800;
+  font-size: var(--cc-link-fs);
+}
+
+@media (min-width: 1024px) {
+  .cc-nav .ccn-links { display: flex; }
+  .cc-nav .ccn-brand { min-width: 200px; }
+}
+
+.cc-nav .ccn-link {
+  padding: 10px 12px;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.cc-nav .ccn-link:hover { background: rgba(50, 87, 235, 0.07); transform: translateY(-1px); }
+
+.cc-nav .ccn-dd { position: relative; }
+.cc-nav .ccn-dd > button {
+  color: inherit;
+  font-weight: 800;
+  font-size: var(--cc-link-fs);
+  padding: 10px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.cc-nav .ccn-dd > button:hover { background: rgba(50, 87, 235, 0.07); }
+.cc-nav .ccn-caret { width: 16px; height: 16px; transition: transform 0.2s; }
+.cc-nav .ccn-dd.open .ccn-caret { transform: rotate(180deg); }
+
+.cc-nav .ccn-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 280px;
+  background: var(--cc-card2);
+  border: 1px solid var(--cc-line);
+  box-shadow: var(--cc-shadow);
+  border-radius: 18px;
+  padding: 8px;
+  display: none;
+}
+.cc-nav .ccn-dd.open .ccn-menu { display: block; }
+
+.cc-nav .ccn-menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+.cc-nav .ccn-menu a:hover { background: rgba(75, 160, 248, 0.1); }
+.cc-nav .ccn-menu .ccn-note {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--cc-muted);
+  margin-top: 2px;
+}
+
+/* ---- Product mega-menu ----------------------------------------------------
+   The dropdown teaches the products: each row shows funnel stage, name and a
+   one-line description, so the menu itself carries the pitch. */
+.cc-nav .ccn-dd-mega .ccn-menu { min-width: 560px; padding: 12px; }
+@media (max-width: 620px) {
+  /* Never let the mega-menu run past the viewport on small desktop widths. */
+  .cc-nav .ccn-dd-mega .ccn-menu { min-width: min(560px, 92vw); }
+}
+.cc-nav .ccn-mega-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.cc-nav .ccn-mega-item {
+  display: block;
+  padding: 12px 12px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+}
+.cc-nav .ccn-mega-item:hover { background: rgba(75, 160, 248, 0.1); }
+.cc-nav .ccn-mega-stage {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.42);
+}
+.cc-nav .ccn-mega-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--cc-ink);
+}
+.cc-nav .ccn-mega-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cc-accent2);
+  background: rgba(50, 87, 235, 0.1);
+  border: 1px solid rgba(50, 87, 235, 0.2);
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+.cc-nav .ccn-mega-note {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--cc-muted);
+}
+.cc-nav .ccn-mega-foot {
+  display: block;
+  margin-top: 8px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: rgba(50, 87, 235, 0.06);
+  color: var(--cc-accent2);
+  font-weight: 800;
+  font-size: 13px;
+}
+.cc-nav .ccn-mega-foot:hover { background: rgba(50, 87, 235, 0.12); }
+
+@media (max-width: 460px) {
+  .cc-nav .ccn-mega-grid { grid-template-columns: 1fr; }
+}
+
+.cc-nav .ccn-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.cc-nav .ccn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(15, 23, 42, 0.92);
+  font-weight: 800;
+  font-size: var(--cc-btn-fs);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.cc-nav .ccn-btn.secondary { display: none; }
+@media (min-width: 640px) {
+  .cc-nav .ccn-btn.secondary { display: inline-flex; }
+}
+.cc-nav .ccn-btn.primary {
+  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
+  color: #fff;
+  border: none;
+}
+.cc-nav .ccn-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); }
+
+.cc-nav .ccn-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+}
+@media (min-width: 1024px) {
+  .cc-nav .ccn-burger { display: none; }
+}
+
+.cc-nav .ccn-mobile {
+  display: none;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-top: 1px solid var(--cc-line);
+  background: #fff;
+}
+.cc-nav .ccn-mobile.open { display: block; }
+.cc-nav .ccn-mobile-inner { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+
+.cc-nav .ccn-mobile-inner > a,
+.cc-nav .ccn-mobile-link {
+  padding: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+.cc-nav .ccn-mobile-dd {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 12px;
+  border-left: 2px solid var(--cc-accent);
+  margin-bottom: 8px;
+}
+.cc-nav .ccn-mobile-dd.open { display: flex; }
+.cc-nav .ccn-mobile-dd a {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  padding: 10px;
+  display: block;
+}
+.cc-nav .ccn-participant { color: var(--cc-accent2); }

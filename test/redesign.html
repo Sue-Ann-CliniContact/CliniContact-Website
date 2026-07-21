@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CliniContact — redesigned homepage (preview)</title>
+  <style>
+    body { margin: 0; background: #fff; }
+    .preview-flag {
+      background: #0b1220; color: #eaf0ff; font: 600 12px/1.4 system-ui, sans-serif;
+      padding: 8px 14px; text-align: center; letter-spacing: .04em;
+    }
+    .preview-flag span { opacity: .65; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <div class="preview-flag">
+    PREVIEW — redesigned homepage · nothing here is live
+    <span>&nbsp;·&nbsp; each block below is one Webflow embed</span>
+  </div>
+
+  <div data-cc="nav" data-cc-dark></div>
+  <div data-cc="hero"></div>
+  <div data-cc="logos"></div>
+  <div data-cc="sections" data-cc-page="products"></div>
+  <div data-cc="proof"></div>
+  <!--
+    B2B chat assistant removed from the redesign. The module still exists
+    (data-cc="chat") if it is brought back, but it occupies the largest single
+    block on the homepage while its service copy is stale and it reads as a
+    consumer widget to a sponsor audience. See the note in README.
+  -->
+  <div data-cc="participant"></div>
+  <div data-cc="newsletter" data-cc-source="homepage"></div>
+  <div data-cc="footer"></div>
+
+  <script src="../dist/cc.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+.cc-partner {
+  width: 100%;
+  font-family: var(--cc-font);
+  color: var(--cc-text);
+}
+.cc-partner, .cc-partner * { box-sizing: border-box; }
+.cc-partner a { color: inherit; text-decoration: none; }
+
+.cc-partner .ccpt-bg {
+  padding: clamp(48px, 5vw, 80px) 18px;
+  background: #fcfdff;
+  border-top: 1px solid rgba(15, 23, 42, 0.07);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+}
+.cc-partner .ccpt-inner { max-width: 1120px; margin: 0 auto; }
+
+.cc-partner .ccpt-kicker {
+  text-align: center;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--cc-accent2);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+.cc-partner .ccpt-h1 {
+  text-align: center;
+  margin: 0 auto 12px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  font-size: clamp(25px, 3vw, 36px);
+  max-width: 24ch;
+  color: var(--cc-ink);
+}
+.cc-partner .ccpt-sub {
+  text-align: center;
+  margin: 0 auto;
+  color: rgba(15, 23, 42, 0.68);
+  font-size: clamp(14px, 1.7vw, 16px);
+  line-height: 1.55;
+  max-width: 66ch;
+}
+
+/* ---- Phase timeline ---- */
+
+.cc-partner .ccpt-phases {
+  margin-top: clamp(30px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.cc-partner .ccpt-phase {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 1px 3px rgba(2, 6, 23, 0.04);
+}
+@media (min-width: 860px) {
+  .cc-partner .ccpt-phase { grid-template-columns: 150px 1fr 260px; gap: 26px; align-items: start; }
+}
+
+.cc-partner .ccpt-n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--cc-accent2);
+  background: rgba(50, 87, 235, 0.09);
+  border: 1px solid rgba(50, 87, 235, 0.16);
+}
+.cc-partner .ccpt-window {
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.cc-partner .ccpt-title {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--cc-ink);
+  line-height: 1.25;
+}
+.cc-partner .ccpt-body { margin: 0; font-size: 14px; line-height: 1.6; color: rgba(15, 23, 42, 0.7); }
+
+.cc-partner .ccpt-swap {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+.cc-partner .ccpt-swap div {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f6f8fc;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+}
+.cc-partner .ccpt-swap b {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.45);
+  margin-bottom: 4px;
+}
+.cc-partner .ccpt-swap span { font-size: 12.5px; line-height: 1.45; color: rgba(15, 23, 42, 0.72); font-weight: 600; }
+
+/* ---- Principles ---- */
+
+.cc-partner .ccpt-principles {
+  margin-top: clamp(30px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 720px) { .cc-partner .ccpt-principles { grid-template-columns: 1fr 1fr; } }
+
+.cc-partner .ccpt-principle {
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-left: 2px solid var(--cc-accent2);
+}
+.cc-partner .ccpt-principle h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.012em;
+  color: var(--cc-ink);
+}
+.cc-partner .ccpt-principle p { margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(15, 23, 42, 0.68); }
+
+.cc-partner .ccpt-cta {
+  margin: clamp(30px, 4vw, 44px) auto 0;
+  text-align: center;
+}
+.cc-partner .ccpt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 10px;
+  background: var(--cc-accent2);
+  border: 1px solid var(--cc-accent2);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.cc-partner .ccpt-btn:hover { background: #2a49c9; }
