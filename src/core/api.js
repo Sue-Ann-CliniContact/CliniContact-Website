@@ -23,6 +23,9 @@ export const PARTICIPANT_URL = 'https://bridge-beacon.org/discover/';
 export const NEWSLETTER_URL =
   'https://www.linkedin.com/newsletters/protocol-to-patients-7452356070964080640';
 
+/** General contact form (footer "Contact us"). Distinct from the pricing/quote form. */
+export const CONTACT_FORM = 'https://forms.clinicontact.com/contact-us';
+
 /**
  * Company social presence — one source of truth. Add handles here as they are
  * confirmed; the footer and any other module should read from this rather than

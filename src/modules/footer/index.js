@@ -39,7 +39,7 @@ function mount(el) {
                     and validated handoff to your site.
                   </p>
                   <div class="ccf-actions">
-                    <button type="button" class="ccf-btn primary" data-cc-contact>
+                    <button type="button" class="ccf-btn primary" data-cc-contactus>
                       Contact us <span aria-hidden="true">&rarr;</span>
                     </button>
                     <a class="ccf-btn" href="tel:${PHONE_TEL}">Call <span aria-hidden="true">&#9742;</span></a>
