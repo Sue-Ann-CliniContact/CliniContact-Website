@@ -100,9 +100,10 @@ const accentFor = (s, i) => ACCENTS[PRODUCT_ACCENT[s.id]] || ACCENTS[ACCENT_ORDE
 const section = (s, i) => {
   const reverse = s.reverse ?? i % 2 === 1;
   const a = accentFor(s, i);
+  const alt = i % 2 === 1 ? ' ccx-alt' : '';
   return `
     ${aliasAnchors(s)}
-    <section id="${s.id}" class="cc-fullbleed ccx-band ccx-band-tinted${reverse ? ' reverse' : ''} reveal" style="--accent:${a.c};--accent-tint:${a.t}">
+    <section id="${s.id}" class="cc-fullbleed ccx-band ccx-band-sec${alt}${reverse ? ' reverse' : ''} reveal" style="--accent:${a.c}">
       <div class="ccx-band-inner">
         <div class="ccx-inner">
           <div class="ccx-copy">
