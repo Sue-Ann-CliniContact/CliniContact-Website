@@ -17,14 +17,20 @@
 .cc-sections .ccx-band {
   padding: clamp(44px, 5vw, 84px) 22px;
 }
-.cc-sections .ccx-band-a { background: #ffffff; }
-.cc-sections .ccx-band-b { background: #eef3fb; }
+/* Each product/audience band is washed in its signature accent tint and topped
+   with a thin rule in the solid accent — colour that also codes the section. */
+.cc-sections .ccx-band-tinted {
+  background: var(--accent-tint, #f4f7fb);
+  border-top: 3px solid var(--accent, var(--cc-accent2));
+}
 .cc-sections .ccx-header-band {
   background: linear-gradient(180deg, #f4f7fb, #eef3fb);
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   padding-bottom: clamp(30px, 3.5vw, 52px);
 }
-.cc-sections .ccx-band + .ccx-band { border-top: 1px solid rgba(15, 23, 42, 0.06); }
+/* Non-tinted adjacent bands (header/dark) still get a hairline separator; the
+   tinted product bands provide their own accent top rule instead. */
+.cc-sections .ccx-band + .ccx-band:not(.ccx-band-tinted) { border-top: 1px solid rgba(15, 23, 42, 0.06); }
 
 .cc-sections .ccx-band-inner {
   width: 100%;
@@ -151,10 +157,10 @@
   align-items: center;
   gap: 10px;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   font-size: 12.5px;
-  color: rgba(15, 23, 42, 0.6);
+  color: var(--accent, var(--cc-accent2));
   margin: 0 0 12px;
 }
 .cc-sections .ccx-eyebrow::before {
@@ -162,8 +168,7 @@
   width: 22px;
   height: 10px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
-  box-shadow: 0 10px 20px rgba(50, 87, 235, 0.22);
+  background: var(--accent, var(--cc-accent2));
 }
 
 .cc-sections .ccx-title {
@@ -187,12 +192,10 @@
   align-items: flex-start;
   padding: 13px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  /* White pills sit crisply on the tinted band. */
+  background: rgba(255, 255, 255, 0.78);
 }
-/* On the white band there is no contrast from a translucent-white pill, so give
-   it a faint tinted fill instead. */
-.cc-sections .ccx-band-a .ccx-li { background: #f5f8fc; }
 .cc-sections .ccx-check {
   width: 18px;
   height: 18px;
@@ -200,9 +203,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(75, 160, 248, 0.18);
-  border: 1px solid rgba(75, 160, 248, 0.35);
-  color: var(--cc-accent2);
+  background: #fff;
+  border: 1px solid var(--accent, var(--cc-accent2));
+  color: var(--accent, var(--cc-accent2));
   flex: 0 0 auto;
   margin-top: 1px;
   font-weight: 950;
@@ -213,7 +216,7 @@
 .cc-sections .ccx-media {
   border-radius: 12px;
   border: 1px solid rgba(15, 23, 42, 0.08);
-  background: #f6f8fc;
+  background: #fff;
   padding: 14px;
   position: relative;
   overflow: hidden;
@@ -405,10 +408,11 @@
 }
 .cc-sections .ccx-btn:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.92); box-shadow: 0 14px 34px rgba(2, 6, 23, 0.1); }
 .cc-sections .ccx-btn.primary {
-  background: linear-gradient(135deg, var(--cc-accent2), var(--cc-accent));
+  background: var(--accent, var(--cc-accent2));
   color: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  border: 1px solid transparent;
 }
+.cc-sections .ccx-btn.primary:hover { background: var(--accent, var(--cc-accent2)); filter: brightness(1.08); }
 
 /**
  * Reveal animation, opt-in.

@@ -17,30 +17,39 @@ import css from './hero.css';
  * Also carries no volume metrics; scale is the comparison CliniContact loses.
  */
 
+/**
+ * `accent` is a bright variant of each product's signature colour (the product
+ * sections use darker, text-safe versions of the same hues on white). Bright is
+ * needed here because the badges sit on the dark navy hero.
+ */
 const STAGES = [
   {
     stage: 'Startup & digital recruitment',
     name: 'Horizon',
     desc: 'Recruitment package built, then campaigns we run to your ad spend.',
     href: '#horizon',
+    accent: '#4ba0f8',
   },
   {
     stage: 'Referral pathways',
     name: 'Bridge',
     desc: 'Community and provider networks matched to your catchment area.',
     href: '#bridge',
+    accent: '#2dd4bf',
   },
   {
     stage: 'Prescreening',
     name: 'Smart Screener',
     desc: 'Your I/E criteria applied before a coordinator is involved.',
     href: '#smart-screener',
+    accent: '#a78bfa',
   },
   {
     stage: 'Participant record',
     name: 'Vision',
     desc: 'Every message and outcome on one auditable timeline.',
     href: '#vision',
+    accent: '#fb923c',
   },
 ];
 
@@ -78,7 +87,7 @@ function mount(el) {
           <div class="cch-spine">
             ${STAGES.map(
               (s, i) => `
-              <a class="cch-step" href="${s.href}">
+              <a class="cch-step" href="${s.href}" style="--accent:${s.accent}">
                 <span class="cch-step-n">${i + 1}</span>
                 <span class="cch-step-stage">${s.stage}</span>
                 <span class="cch-step-name">${s.name}</span>

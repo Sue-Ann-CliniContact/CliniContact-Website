@@ -76,17 +76,33 @@ const scaleBlock = (scale) =>
       </div>`;
 
 /**
- * Each product/audience section is its own full-width band with an alternating
- * background, rather than a card in a centered column. This is what makes the
- * page read as flowing edge-to-edge instead of a stack of centered blocks, and
- * it gives each section a distinct backdrop so they stand apart.
+ * Per-product accent palette. Text-safe colours (they land on text, borders and
+ * check marks and need AA contrast on white) paired with a very light tint used
+ * as the section's background wash. Gives each section its own signature colour
+ * so dense content is easier to scan, without tipping into a rainbow.
+ */
+const ACCENTS = {
+  blue: { c: '#3257EB', t: '#eef2fe' },
+  teal: { c: '#0f766e', t: '#e8f5f2' },
+  violet: { c: '#6d28d9', t: '#f3eefe' },
+  amber: { c: '#c2410c', t: '#fdefe7' },
+};
+const ACCENT_ORDER = ['blue', 'teal', 'violet', 'amber'];
+const PRODUCT_ACCENT = { horizon: 'blue', bridge: 'teal', 'smart-screener': 'violet', vision: 'amber' };
+const accentFor = (s, i) => ACCENTS[PRODUCT_ACCENT[s.id]] || ACCENTS[ACCENT_ORDER[i % ACCENT_ORDER.length]];
+
+/**
+ * Each product/audience section is its own full-width band, washed in its
+ * signature accent tint with a coloured top rule. This makes the page flow
+ * edge-to-edge (not a stack of centered cards) and gives each section a
+ * distinct, scannable colour.
  */
 const section = (s, i) => {
   const reverse = s.reverse ?? i % 2 === 1;
-  const band = i % 2 === 0 ? 'ccx-band-a' : 'ccx-band-b';
+  const a = accentFor(s, i);
   return `
     ${aliasAnchors(s)}
-    <section id="${s.id}" class="cc-fullbleed ccx-band ${band}${reverse ? ' reverse' : ''} reveal">
+    <section id="${s.id}" class="cc-fullbleed ccx-band ccx-band-tinted${reverse ? ' reverse' : ''} reveal" style="--accent:${a.c};--accent-tint:${a.t}">
       <div class="ccx-band-inner">
         <div class="ccx-inner">
           <div class="ccx-copy">
